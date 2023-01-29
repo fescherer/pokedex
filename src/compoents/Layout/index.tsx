@@ -1,4 +1,5 @@
 import { Footer } from 'compoents/Footer'
+import Header from 'compoents/Header'
 import Head from 'next/head'
 import { Children } from 'types/Global'
 import { appConfig } from 'util/config'
@@ -11,7 +12,7 @@ export const Layout = ({ children }: Children) => {
         <Head>
           <title>{appConfig.title}</title>
         </Head>
-        {/* <Header /> */}
+        <Header />
         <S.MainLayout>{children}</S.MainLayout>
       </S.Contain>
       <Footer />

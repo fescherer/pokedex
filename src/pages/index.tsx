@@ -1,4 +1,3 @@
-import ThemeButton from 'compoents/Button'
 import IconButton from 'compoents/IconButton'
 import GithubIcon from 'icons/github'
 import { useTheme } from 'styled-components'
@@ -10,7 +9,6 @@ export default function Home() {
   return (
     <S.MainContent>
       <S.Title>Boilerplate dos projetos em Next JS do Felipe Scherer</S.Title>
-      <ThemeButton></ThemeButton>
       <IconButton>
         <a
           href="https://github.com/ofelipescherer"
