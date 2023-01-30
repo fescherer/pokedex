@@ -18,7 +18,8 @@ export const palette: ColorPalette = {
     400: '#E2E8F0',
     500: '#CBD5E1',
     600: '#94A3B8',
-    700: '#64748B'
+    700: '#64748B',
+    800: '#DADADA'
   },
   dark_gray: {
     50: '#4E4E4E',

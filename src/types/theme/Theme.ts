@@ -1,8 +1,5 @@
 export type Theme = {
-  dark: ThemeConfig
   light: ThemeConfig
-  green: ThemeConfig
-  desert: ThemeConfig
 }
 
 export type Colors = {

@@ -7,7 +7,9 @@ export const Wrapper = styled.div`
   align-items: center;
 
   ${media.lessThan('tablet')`
-    width: 100%;
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    border-radius: 5px
   `};
 `
 
@@ -44,7 +46,7 @@ export const Input = styled.input`
   }
 
   ${media.lessThan('tablet')`
-    border-radius: 0;
+
     width: 100%;
   `};
 `
