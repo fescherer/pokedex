@@ -1,14 +1,12 @@
 import React from 'react'
+import { PokemonType } from 'types/Pokemon/Pokemon'
 import * as S from './styles'
 
 type PokemonCardProps = {
-  name: string
-  no: number
-  image: string
-  gif: string | undefined
+  pokemon: PokemonType
 }
 
-export function PokemonCard({ name, no, image, gif }: PokemonCardProps) {
+export function PokemonCard({ pokemon }: PokemonCardProps) {
   const [isHovering, setIsHovered] = React.useState(false)
   const onMouseEnter = () => setIsHovered(true)
   const onMouseLeave = () => setIsHovered(false)
@@ -17,13 +15,26 @@ export function PokemonCard({ name, no, image, gif }: PokemonCardProps) {
   return (
     <S.Wrapper onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <S.Header>
-        <span>{name}</span>
-        <S.Number>#{String(no).padStart(5, '0')}</S.Number>
+        <span>{pokemon.name}</span>
+        <S.Number>#{String(pokemon.id).padStart(5, '0')}</S.Number>
       </S.Header>
       {isHovering ? (
-        <S.PokeImage src={gif ?? ''} width={96} height={96} alt={name} />
+        <S.PokeImage
+          src={
+            pokemon.sprites?.versions?.['black-white']?.animated
+              ?.front_default ?? pokemon.sprites.front_default
+          }
+          width={96}
+          height={96}
+          alt={pokemon.name}
+        />
       ) : (
-        <S.PokeImage src={image ?? ''} width={96} height={96} alt={name} />
+        <S.PokeImage
+          src={pokemon.sprites.front_default ?? ''}
+          width={96}
+          height={96}
+          alt={pokemon.name}
+        />
       )}
     </S.Wrapper>
   )

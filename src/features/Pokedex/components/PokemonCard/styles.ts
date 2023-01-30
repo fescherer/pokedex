@@ -36,4 +36,5 @@ export const Number = styled.span`
 
 export const PokeImage = styled(Image)`
   align-self: center;
+  image-rendering: pixelated;
 `

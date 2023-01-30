@@ -1,49 +1,60 @@
 import { PokemonCard } from './components/PokemonCard'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as S from './styles'
+import React from 'react'
+import { PokemonType } from 'types/Pokemon/Pokemon'
+import axios from 'axios'
 import { PokemonDetail } from 'features/PokemonDetail'
 
-const pokeMocked = [
-  {
-    name: 'Bulbasaur',
-    number: 1,
-    image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    gif: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif'
-  },
-  {
-    name: 'Bedril',
-    number: 15,
-    image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png'
-  },
-  {
-    name: 'Pidgeotto',
-    number: 17,
-    image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/17.png'
-  },
-  {
-    name: 'Palkia Origin',
-    number: 10246,
-    image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10246.png'
-  }
-]
+let counter = 0
 
 export function Pokedex() {
+  // const [counter, setCounter] = React.useState(-20)
+  // const [data, setData] = React.useState<PokemonType[]>([])
+
+  // const loadMore = async () => {
+  //   const dataa: PokemonRequest = await (
+  //     await fetch(
+  //       `https://pokeapi.co/api/v2/pokemon?offset=${counter + 20}&limit=${20}`
+  //     )
+  //   ).json()
+
+  //   // set state when the data received
+  //   setCounter((prev) => prev + 20)
+
+  //   dataa.results.map(async (poke) => {
+  //     await (await fetch(poke.url)).json().then((data) => {
+  //       setData((prev) => [...prev, data])
+  //     })
+  //   })
+  // }
+
+  const [data, setData] = React.useState<PokemonType[]>([])
+
+  const loadMore = async () => {
+    const urls: string[] = []
+
+    for (let i = counter + 1; i <= counter + 20; i++) {
+      urls.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
+    }
+
+    counter = counter + 20
+
+    axios.all(urls.map((endpoint) => axios.get(endpoint))).then((data) => {
+      const onlyData: PokemonType[] = data.map((url) => url.data)
+
+      setData((prev) => [...prev, ...onlyData])
+    })
+  }
+
+  console.log(data, 'data')
+
   return (
     <S.Wrapper>
       <Dialog.Root>
         <S.Container>
-          {pokeMocked.map((poke) => (
-            <PokemonCard
-              key={poke.name}
-              image={poke.image}
-              name={poke.name}
-              no={poke.number}
-              gif={poke?.gif}
-            />
+          {data.map((pokemon) => (
+            <PokemonCard key={pokemon.id} pokemon={pokemon} />
           ))}
         </S.Container>
         <Dialog.Portal>
@@ -56,6 +67,10 @@ export function Pokedex() {
           </S.PokeDialog>
         </Dialog.Portal>
       </Dialog.Root>
+
+      <button style={{ background: 'violet' }} onClick={loadMore}>
+        Load More
+      </button>
     </S.Wrapper>
   )
 }
