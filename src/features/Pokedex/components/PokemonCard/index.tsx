@@ -12,7 +12,6 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const onMouseEnter = () => setIsHovered(true)
   const onMouseLeave = () => setIsHovered(false)
 
-  console.log('aaa')
   const { setPokemonDetail } = usePokemonDetailContext()
 
   const savePokemonDetail = (pokemon: PokemonType) => {

@@ -11,7 +11,7 @@ export function PokemonDetail() {
 
   return (
     <S.Wrapper>
-      <S.Container>
+      <S.Container type={pokemon.types[0].type.name}>
         <S.HeaderContainer>
           <S.HeaderTitleContainer>
             <ArrowLeft size={20} />
@@ -28,6 +28,14 @@ export function PokemonDetail() {
               height={150}
               alt=""
             />
+
+            <S.TypeContainer>
+              {pokemon.types.map((type) => (
+                <S.PokemonType type={type.type.name} key={type.type.name}>
+                  {type.type.name}
+                </S.PokemonType>
+              ))}
+            </S.TypeContainer>
           </S.ImageContainer>
 
           <CardTab />
