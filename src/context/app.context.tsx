@@ -1,11 +1,12 @@
 import { Children } from 'types/Global'
+import { PokemonDetailProvider } from './pokemonDetail.context'
 import { ThemeProvider } from './theme.context'
 
 export default function AppContextProvider({ children }: Children) {
   const components: Array<
     | React.JSXElementConstructor<React.PropsWithChildren<unknown>>
     | (({ children }: Children) => JSX.Element)
-  > = [ThemeProvider]
+  > = [ThemeProvider, PokemonDetailProvider]
 
   return (
     <>

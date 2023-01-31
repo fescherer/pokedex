@@ -1,3 +1,4 @@
+import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
 import { PokemonType } from 'types/Pokemon/Pokemon'
 import * as S from './styles'
@@ -12,8 +13,17 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const onMouseLeave = () => setIsHovered(false)
 
   console.log('aaa')
+  const { setPokemonDetail } = usePokemonDetailContext()
+
+  const savePokemonDetail = (pokemon: PokemonType) => {
+    setPokemonDetail(pokemon)
+  }
   return (
-    <S.Wrapper onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <S.Wrapper
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onClick={() => savePokemonDetail(pokemon)}
+    >
       <S.Header>
         <span>{pokemon.name}</span>
         <S.Number>#{String(pokemon.id).padStart(5, '0')}</S.Number>
@@ -21,8 +31,8 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
       {isHovering ? (
         <S.PokeImage
           src={
-            pokemon.sprites?.versions?.['black-white']?.animated
-              ?.front_default ?? pokemon.sprites.front_default
+            pokemon.sprites?.versions?.['generation-v']?.['black-white']
+              ?.animated?.front_default ?? pokemon.sprites.front_default
           }
           width={96}
           height={96}

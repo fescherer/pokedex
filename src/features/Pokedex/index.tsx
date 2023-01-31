@@ -60,8 +60,6 @@ export function Pokedex() {
         <Dialog.Portal>
           <S.DialogOverlay />
           <S.PokeDialog>
-            <Dialog.Title>Oba oba</Dialog.Title>
-            <Dialog.Description />
             <PokemonDetail />
             <Dialog.Close />
           </S.PokeDialog>
