@@ -1,4 +1,4 @@
-import { NamedAPIType } from './Common'
+import { NamedAPIType, NamesType } from './Common'
 
 export type LocationType = {
   id: number
@@ -7,11 +7,6 @@ export type LocationType = {
   names: NamesType[]
   game_indices: GenerationGameIndexType[]
   areas: NamedAPIType
-}
-
-export type NamesType = {
-  name: string
-  language: NamedAPIType
 }
 
 export type GenerationGameIndexType = {

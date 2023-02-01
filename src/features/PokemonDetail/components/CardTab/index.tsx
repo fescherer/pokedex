@@ -4,6 +4,7 @@ import { AlignLeft, Circle, MapPin } from 'phosphor-react'
 import { PokeballIcon } from 'icons/pokeball'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
+import { PokemonFeatures } from '../PokemonFeatures'
 
 export function CardTab() {
   const { pokemonDetail: pokemon } = usePokemonDetailContext()
@@ -35,7 +36,7 @@ export function CardTab() {
         <PokemonStats />
       </S.Content>
       <S.Content value="evolution">
-        <span>G</span>
+        <PokemonFeatures />
       </S.Content>
       <S.Content value="location">
         <span>G</span>

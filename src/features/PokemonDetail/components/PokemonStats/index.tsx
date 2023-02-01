@@ -44,7 +44,6 @@ function PokemonStat({ pokemonColor, stat, sum }: PokemonStatType) {
 
 export function PokemonStats() {
   const { pokemonDetail: pokemon } = usePokemonDetailContext()
-  console.log(pokemon)
 
   if (!pokemon) return <div>Loading...</div>
 

@@ -1,4 +1,6 @@
 import { NamedAPIType, PokemonHeldItemType, VersionGameType } from './Common'
+import { EvolutionChainType } from './Evolution'
+import { PokemonSpeciesFullDataType } from './Species'
 
 export type PokemonType = {
   id: number
@@ -19,6 +21,9 @@ export type PokemonType = {
   species: NamedAPIType
   stats: PokemonStatType[]
   types: PokemonTypeType[]
+
+  speciesFullData?: PokemonSpeciesFullDataType
+  evolution?: EvolutionChainType
 }
 
 export type PokemonAbilityType = {

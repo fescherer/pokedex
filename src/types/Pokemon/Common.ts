@@ -17,3 +17,23 @@ export type PokemonHeldItemVersionType = {
   version: NamedAPIType
   rarity: number
 }
+
+export type APIResourceType = {
+  url: string
+}
+
+export type NamesType = {
+  name: string
+  language: NamedAPIType
+}
+
+export type FlavorTextType = {
+  flavor_text: string
+  language: NamedAPIType
+  version: NamedAPIType
+}
+
+export type DescriptionType = {
+  description: string
+  language: NamedAPIType
+}
