@@ -1,6 +1,8 @@
 import axios from 'axios'
+import { Title } from 'compoents/Title'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
+import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
 import * as S from './styles'
 
 export function PokemonFeatures() {
@@ -26,16 +28,23 @@ export function PokemonFeatures() {
 
   if (!pokemon || !pokemon.speciesFullData) return <div>Loading...</div>
 
+  const pokemonColor =
+    PokemonTypeColors[
+      pokemon.types[0].type.name as keyof typeof PokemonTypeColors
+    ]
+
   console.log('specie data: ', pokemon.speciesFullData) //Pegar o varieties, genera, habitat, names
   console.log('evolution data: ', pokemon.evolution) //Pegar o evolution- talvez seja melhor criar o próprio componente
 
   return (
     <div>
-      <div>
+      <Title color={pokemonColor}>Forma física</Title>
+
+      <S.PokemonFeatureContainer>
         <span>{pokemon?.height}</span>
         <S.Divider decorative orientation="vertical" />
         <span>{pokemon?.weight}</span>
-      </div>
+      </S.PokemonFeatureContainer>
 
       <div>
         <span>{`Generation: ${pokemon.speciesFullData.name}`}</span>

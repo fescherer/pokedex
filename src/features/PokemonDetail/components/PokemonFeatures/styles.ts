@@ -27,3 +27,9 @@ export const Divider = styled(Separator.Root)`
   align-self: stretch;
   justify-self: stretch;
 `
+
+export const PokemonFeatureContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+`

@@ -1,4 +1,5 @@
 import { ProgressBar } from 'compoents/ProgressBar'
+import { Title } from 'compoents/Title'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
 import { PokemonType } from 'types/Pokemon/Pokemon'
@@ -64,21 +65,33 @@ export function PokemonStats() {
   const sum = getTotal(pokemon)
 
   return (
-    <S.Wrapper>
-      <PokemonStat pokemonColor={pokemonColor} stat={stats.hp} sum={sum} />
-      <PokemonStat pokemonColor={pokemonColor} stat={stats.attack} sum={sum} />
-      <PokemonStat pokemonColor={pokemonColor} stat={stats.defense} sum={sum} />
-      <PokemonStat pokemonColor={pokemonColor} stat={stats.spatk} sum={sum} />
-      <PokemonStat pokemonColor={pokemonColor} stat={stats.spdef} sum={sum} />
-      <PokemonStat pokemonColor={pokemonColor} stat={stats.spdef} sum={sum} />
+    <>
+      <Title color={pokemonColor}>Stats</Title>
 
-      <S.StatContainer>
-        <S.Title color={pokemonColor}>{'Total'}</S.Title>
-        <S.Divider decorative orientation="vertical" />
+      <S.Wrapper>
+        <PokemonStat pokemonColor={pokemonColor} stat={stats.hp} sum={sum} />
+        <PokemonStat
+          pokemonColor={pokemonColor}
+          stat={stats.attack}
+          sum={sum}
+        />
+        <PokemonStat
+          pokemonColor={pokemonColor}
+          stat={stats.defense}
+          sum={sum}
+        />
+        <PokemonStat pokemonColor={pokemonColor} stat={stats.spatk} sum={sum} />
+        <PokemonStat pokemonColor={pokemonColor} stat={stats.spdef} sum={sum} />
+        <PokemonStat pokemonColor={pokemonColor} stat={stats.spdef} sum={sum} />
 
-        <div style={{ width: '100%' }}></div>
-        <S.Value>{sum}</S.Value>
-      </S.StatContainer>
-    </S.Wrapper>
+        <S.StatContainer>
+          <S.Title color={pokemonColor}>{'Total'}</S.Title>
+          <S.Divider decorative orientation="vertical" />
+
+          <div style={{ width: '100%' }}></div>
+          <S.Value>{sum}</S.Value>
+        </S.StatContainer>
+      </S.Wrapper>
+    </>
   )
 }
