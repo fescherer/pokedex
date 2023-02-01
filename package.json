@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.2",
+    "@radix-ui/react-progress": "^1.0.1",
+    "@radix-ui/react-separator": "^1.0.1",
     "@radix-ui/react-tabs": "^1.0.2",
     "@types/node": "^18.11.10",
     "@types/react": "^18.0.26",

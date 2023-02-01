@@ -14,7 +14,7 @@ export const ItemTab = styled(Tabs.List)`
   justify-content: space-around;
 `
 
-export const Trigger = styled(Tabs.Trigger)`
+export const Trigger = styled(Tabs.Trigger)<{ color: string }>`
   @keyframes contentShow {
     0% {
       transform: translateY(0);
@@ -36,12 +36,11 @@ export const Trigger = styled(Tabs.Trigger)`
 
   &:hover {
     animation: contentShow 0.5s;
-    color: blue;
-    fill: blue;
+    opacity: 0.5;
   }
 
   &[data-state='active'] {
-    color: red;
+    color: ${(props) => props.color};
   }
 `
 export const Content = styled(Tabs.Content)`
