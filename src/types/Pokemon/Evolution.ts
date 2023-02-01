@@ -10,7 +10,7 @@ export type ChainLinkType = {
   is_baby: boolean
   species: NamedAPIType
   evolution_details: EvolutionDetailType[]
-  evolves_to: ChainLinkType
+  evolves_to: ChainLinkType[]
 }
 
 export type EvolutionDetailType = {

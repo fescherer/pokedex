@@ -26,7 +26,8 @@ export function PokemonFeatures() {
     })
   }, [pokemon, setPokemonDetail])
 
-  if (!pokemon || !pokemon.speciesFullData) return <div>Loading...</div>
+  if (!pokemon || !pokemon.speciesFullData || !pokemon.evolution)
+    return <div>Loading...</div>
 
   const pokemonColor =
     PokemonTypeColors[
@@ -48,6 +49,11 @@ export function PokemonFeatures() {
 
       <div>
         <span>{`Generation: ${pokemon.speciesFullData.name}`}</span>
+      </div>
+
+      <div>
+        <span> {pokemon.evolution.chain.species.name}</span>
+        {/* <span>{pokemon.evolution.chain.evolves_to.map(poke => poke)}</span> */}
       </div>
 
       <S.PokemonChain>
