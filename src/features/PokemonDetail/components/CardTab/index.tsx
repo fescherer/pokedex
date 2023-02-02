@@ -5,6 +5,7 @@ import { PokeballIcon } from 'icons/pokeball'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
 import { PokemonFeatures } from '../PokemonFeatures'
+import PokemonLocations from '../PokemonLocations'
 
 export function CardTab() {
   const { pokemonDetail: pokemon } = usePokemonDetailContext()
@@ -39,7 +40,7 @@ export function CardTab() {
         <PokemonFeatures />
       </S.Content>
       <S.Content value="location">
-        <span>G</span>
+        <PokemonLocations />
       </S.Content>
     </S.TabContainer>
   )

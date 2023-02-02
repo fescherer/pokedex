@@ -35,7 +35,8 @@ export type EncounterVersionDetailsType = {
 }
 
 export type PokemonEncounterType = {
-  pokemon: NamedAPIType
+  pokemon?: NamedAPIType
+  location_area: NamedAPIType & { location_detail: LocationAreaType }
   version_details: VersionEncounterDetailType[]
 }
 
@@ -48,7 +49,7 @@ export type VersionEncounterDetailType = {
 export type EncounterType = {
   min_level: number
   max_level: number
-  condition_values: NamedAPIType
+  condition_values: NamedAPIType[]
   chance: number
   method: NamedAPIType
 }

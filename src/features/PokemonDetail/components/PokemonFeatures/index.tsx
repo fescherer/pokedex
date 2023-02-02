@@ -53,7 +53,22 @@ export function PokemonFeatures() {
 
       <div>
         <span> {pokemon.evolution.chain.species.name}</span>
-        {/* <span>{pokemon.evolution.chain.evolves_to.map(poke => poke)}</span> */}
+        <span>
+          {pokemon.evolution.chain.evolves_to.map((poke) => {
+            return (
+              <div key={poke.species.name}>
+                <div>{poke.species.name}</div>
+                {poke.evolves_to.map((pokeLast) => {
+                  return (
+                    <div key={pokeLast.species.name}>
+                      <div>{pokeLast.species.name}</div>
+                    </div>
+                  )
+                })}
+              </div>
+            )
+          })}
+        </span>
       </div>
 
       <S.PokemonChain>

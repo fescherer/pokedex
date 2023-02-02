@@ -1,3 +1,5 @@
+import { NamesType } from 'types/Pokemon/Common'
+
 export function LightenDarkenColor(col: string, amt: number) {
   let usePound = false
 
@@ -35,4 +37,9 @@ export function getBestContrastColor(bgcolor: string) {
   return r * 0.299 + g * 0.587 + b * 0.114 > 186
     ? (color = '#000')
     : (color = '#fff')
+}
+
+export function getTranslationName(arr: NamesType[], language: string) {
+  const index = arr.findIndex((value) => value.language.name === language)
+  return arr[index]
 }
