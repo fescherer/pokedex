@@ -48,7 +48,7 @@ export function PokemonFeatures() {
       </S.PokemonFeatureContainer>
 
       <div>
-        <span>{`Generation: ${pokemon.speciesFullData.name}`}</span>
+        <span>{`Generation: ${pokemon.speciesFullData.generation.name}`}</span>
       </div>
 
       <div>
