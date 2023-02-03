@@ -34,6 +34,28 @@ export default function PokemonLocations() {
     })
   }, [pokemon, setPokemonDetail])
 
+  // React.useEffect(() => {
+  //   if (!pokemon || pokemon.location) return
+
+  //   const getPokemonLocations = async () => {
+  //     const pokemonEncountersResponse = await axios.get(
+  //       pokemon.location_area_encounters
+  //     )
+  //     const pokemonEncounters = pokemonEncountersResponse.data
+  //     const locationNames = pokemonEncounters.map(
+  //       (encounter: PokemonEncounterType) =>
+  //         encounter.location_area.name.replace(/-/g, ' ')
+  //     )
+
+  //     setPokemonDetail((prev) => {
+  //       if (prev) return { ...prev, location: pokemonEncounters }
+  //       else return null
+  //     })
+  //   }
+
+  //   getPokemonLocations()
+  // }, [pokemon, setPokemonDetail])
+
   console.log(pokemon)
 
   if (!pokemon || !pokemon.location) return <div>Loading...</div>
@@ -42,7 +64,7 @@ export default function PokemonLocations() {
     <div>
       {pokemon?.location.map((location) => (
         <div key={location.location_area.name}>
-          <span>
+          {/* <span>
             Localização:
             {
               getTranslationName(
@@ -50,7 +72,9 @@ export default function PokemonLocations() {
                 'en'
               ).name
             }
-          </span>
+          </span> */}
+
+          <span>{location.location_area.name}</span>
           <span>
             {location.version_details.map((version) => (
               <div key={version.version.name}>
