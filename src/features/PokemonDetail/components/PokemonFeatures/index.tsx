@@ -16,7 +16,7 @@ export function PokemonFeatures() {
       axios.get(response.data.evolution_chain.url).then((resposeEvolution) => {
         console.log(resposeEvolution.data, '1')
 
-        const dataaa = pokemon.evolution.chain.evolves_to.map((poke) => {
+        const dataaa = pokemon?.evolution?.chain.evolves_to.map((poke) => {
           return poke
         })
 
@@ -59,8 +59,8 @@ export function PokemonFeatures() {
       pokemon.types[0].type.name as keyof typeof PokemonTypeColors
     ]
 
-  console.log('specie data: ', pokemon.speciesFullData) //Pegar o varieties, genera, habitat, names
-  console.log('evolution data: ', pokemon.evolution) //Pegar o evolution- talvez seja melhor criar o próprio componente
+  // console.log('specie data: ', pokemon.speciesFullData) //Pegar o varieties, genera, habitat, names
+  // console.log('evolution data: ', pokemon.evolution) //Pegar o evolution- talvez seja melhor criar o próprio componente
 
   return (
     <div>
