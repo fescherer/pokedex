@@ -7,7 +7,7 @@ import * as S from './styles'
 
 export function PokemonFeatures() {
   const { pokemonDetail: pokemon, setPokemonDetail } = usePokemonDetailContext()
-  const { pokemonEvolution, setPokemonEvolution } = React.useState([])
+  // const { pokemonEvolution, setPokemonEvolution } = React.useState([])
 
   React.useEffect(() => {
     if (!pokemon || pokemon.speciesFullData) return
