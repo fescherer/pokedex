@@ -29,6 +29,8 @@ export function Pokedex() {
   //   })
   // }
 
+  // Para pegar a imagem é só passar o id
+
   const [data, setData] = React.useState<PokemonType[]>([])
 
   const loadMore = async () => {
