@@ -5,7 +5,6 @@ import React from 'react'
 import { PokemonType } from 'types/Pokemon/Pokemon'
 import axios from 'axios'
 import { PokemonDetail } from 'features/PokemonDetail'
-import InfiniteScroll from 'react-infinite-scroll-component'
 
 let counter = 0
 
@@ -57,24 +56,9 @@ export function Pokedex() {
     <S.Wrapper>
       <Dialog.Root>
         <S.Container>
-          <InfiniteScroll
-            dataLength={data.length}
-            next={loadMore}
-            style={{ display: 'flex', flexDirection: 'column-reverse' }}
-            inverse={true} //
-            hasMore={true}
-            loader={<h4>Loading...</h4>}
-            scrollableTarget="scrollableDiv"
-            endMessage={
-              <p style={{ textAlign: 'center' }}>
-                <b>Yay! You have seen it all</b>
-              </p>
-            }
-          >
-            {data.map((pokemon) => (
-              <PokemonCard key={pokemon.id} pokemon={pokemon} />
-            ))}
-          </InfiniteScroll>
+          {data.map((pokemon) => (
+            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          ))}
         </S.Container>
         <Dialog.Portal>
           <S.DialogOverlay />
@@ -85,9 +69,7 @@ export function Pokedex() {
         </Dialog.Portal>
       </Dialog.Root>
 
-      <button style={{ background: 'violet' }} onClick={loadMore}>
-        Load More
-      </button>
+      <S.LoadMoreButton onClick={loadMore}>Load More</S.LoadMoreButton>
     </S.Wrapper>
   )
 }

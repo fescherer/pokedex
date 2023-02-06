@@ -9,6 +9,10 @@ export const Wrapper = styled.div`
   padding: 1rem;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 
   ${media.lessThan('tablet')`
   margin: 0;
@@ -64,4 +68,17 @@ export const PokeDialog = styled(Dialog.Content)`
   border-radius: 12px;
   overflow: hidden;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+`
+
+export const LoadMoreButton = styled.div`
+  display: flex;
+  background-color: #d31c1c;
+  color: #fff;
+  padding: 1rem 5rem;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
 `

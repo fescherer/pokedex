@@ -7,18 +7,43 @@ import * as S from './styles'
 
 export function PokemonFeatures() {
   const { pokemonDetail: pokemon, setPokemonDetail } = usePokemonDetailContext()
+  const { pokemonEvolution, setPokemonEvolution } = React.useState([])
 
   React.useEffect(() => {
     if (!pokemon || pokemon.speciesFullData) return
 
     axios.get(pokemon.species.url).then((response) => {
       axios.get(response.data.evolution_chain.url).then((resposeEvolution) => {
+        console.log(resposeEvolution.data, '1')
+
+        const dataaa = pokemon?.evolution?.chain.evolves_to.map((poke) => {
+          return poke
+        })
+
+        // <span>
+        //   {pokemon.evolution.chain.evolves_to.map((poke) => {
+        //     return (
+        //       <div key={poke.species.name}>
+        //         <div>{poke.species.name}</div>
+        //         {poke.evolves_to.map((pokeLast) => {
+        //           return (
+        //             <div key={pokeLast.species.name}>
+        //               <div>{pokeLast.species.name}</div>
+        //             </div>
+        //           )
+        //         })}
+        //       </div>
+        //     )
+        //   })}
+        // </span>
+
         setPokemonDetail((prev) => {
           if (prev)
             return {
               ...prev,
               speciesFullData: response.data,
-              evolution: resposeEvolution.data
+              evolution: resposeEvolution.data,
+              evolutionSprites: []
             }
           else return null
         })
@@ -34,8 +59,8 @@ export function PokemonFeatures() {
       pokemon.types[0].type.name as keyof typeof PokemonTypeColors
     ]
 
-  console.log('specie data: ', pokemon.speciesFullData) //Pegar o varieties, genera, habitat, names
-  console.log('evolution data: ', pokemon.evolution) //Pegar o evolution- talvez seja melhor criar o próprio componente
+  // console.log('specie data: ', pokemon.speciesFullData) //Pegar o varieties, genera, habitat, names
+  // console.log('evolution data: ', pokemon.evolution) //Pegar o evolution- talvez seja melhor criar o próprio componente
 
   return (
     <div>
