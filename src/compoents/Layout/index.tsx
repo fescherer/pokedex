@@ -12,10 +12,10 @@ export const Layout = ({ children }: Children) => {
         <Head>
           <title>{appConfig.title}</title>
         </Head>
-        <Header />
+        {/* <Header /> */}
         <S.MainLayout>{children}</S.MainLayout>
       </S.Contain>
-      <Footer />
+      {/* <Footer /> */}
     </S.Container>
   )
 }
