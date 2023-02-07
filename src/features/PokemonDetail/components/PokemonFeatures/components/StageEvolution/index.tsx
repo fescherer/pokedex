@@ -3,13 +3,14 @@ import { ArrowRight, Question } from 'phosphor-react'
 import * as S from './styles'
 import PokemonDetailEvolution from '../PokemonDetailEvolution'
 import * as HoverCard from '@radix-ui/react-hover-card'
+import { getIDByURL } from 'util/functions'
+import { ChainLinkType } from 'types/Pokemon/Evolution'
 
-export default function StageEvolution({ data }: StageEvolution) {
-  function getID(url: string) {
-    const urlSplitted = url.split('/')
-    return urlSplitted[urlSplitted.length - 2]
-  }
+type StageEvolutionProps = {
+  data: ChainLinkType
+}
 
+export default function StageEvolution({ data }: StageEvolutionProps) {
   return (
     <S.Wrapper>
       <HoverCard.Root>
@@ -32,7 +33,7 @@ export default function StageEvolution({ data }: StageEvolution) {
       <S.PokemonCard>
         <S.PokemonCardTitle>{data.species.name}</S.PokemonCardTitle>
         <Image
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getID(
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
             data.species?.url
           )}.png`}
           width={75}

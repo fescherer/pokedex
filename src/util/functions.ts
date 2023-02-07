@@ -1,4 +1,4 @@
-import { NamesType } from 'types/Pokemon/Common'
+import { NamedAPIType, NamesType } from 'types/Pokemon/Common'
 
 export function LightenDarkenColor(col: string, amt: number) {
   let usePound = false
@@ -42,4 +42,22 @@ export function getBestContrastColor(bgcolor: string) {
 export function getTranslationName(arr: NamesType[], language: string) {
   const index = arr.findIndex((value) => value.language.name === language)
   return arr[index]
+}
+
+export function getIDByURL(url: string) {
+  const urlSplitted = url.split('/')
+  return urlSplitted[urlSplitted.length - 2]
+}
+
+export function filterData(data: NamedAPIType[], filter: string) {
+  if (!filter) return data
+  else {
+    const rg = new RegExp(`^(?=.*\\b${filter}).*$`, 'gmi')
+    return data.filter((pokemon: NamedAPIType) => verifyPokemon(pokemon, rg))
+  }
+}
+
+function verifyPokemon(pokemon: NamedAPIType, rg: RegExp): boolean {
+  if (!pokemon) return false
+  return Boolean(pokemon?.name.match(rg) || getIDByURL(pokemon?.url).match(rg))
 }

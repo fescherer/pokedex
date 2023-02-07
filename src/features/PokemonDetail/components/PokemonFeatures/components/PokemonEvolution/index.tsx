@@ -1,6 +1,8 @@
 import axios from 'axios'
 import Image from 'next/image'
 import React from 'react'
+import { ChainLinkType, EvolutionChainType } from 'types/Pokemon/Evolution'
+import { PokemonSpeciesFullDataType } from 'types/Pokemon/Species'
 import StageEvolution from '../StageEvolution'
 import * as S from './styles'
 
@@ -9,15 +11,19 @@ type PokemonEvolutionProps = {
 }
 
 export default function PokemonEvolution({ pokemon }: PokemonEvolutionProps) {
-  const [pokeEvo, setPokeEvo] = React.useState<any>()
+  const [pokeEvo, setPokeEvo] = React.useState<ChainLinkType | null>(null)
 
   React.useEffect(() => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}`)
+      .get<PokemonSpeciesFullDataType>(
+        `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`
+      )
       .then((response) => {
-        axios.get(response.data.evolution_chain.url).then((chain) => {
-          setPokeEvo(chain.data.chain)
-        })
+        axios
+          .get<EvolutionChainType>(response.data.evolution_chain.url)
+          .then((chain) => {
+            setPokeEvo(chain.data.chain)
+          })
       })
   }, [pokemon])
 
@@ -29,15 +35,7 @@ export default function PokemonEvolution({ pokemon }: PokemonEvolutionProps) {
   if (!pokeEvo) return <></>
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        gap: '1rem',
-        overflow: 'scroll',
-        height: '150px',
-        maxHeight: '100%'
-      }}
-    >
+    <S.Wrapper>
       <S.PokemonCard>
         <S.PokemonCardTitle>{pokeEvo.species?.name}</S.PokemonCardTitle>
         <Image
@@ -61,6 +59,6 @@ export default function PokemonEvolution({ pokemon }: PokemonEvolutionProps) {
           })
         })}
       </S.Container>
-    </div>
+    </S.Wrapper>
   )
 }

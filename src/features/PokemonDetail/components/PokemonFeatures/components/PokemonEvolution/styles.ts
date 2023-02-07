@@ -1,5 +1,13 @@
 import styled from 'styled-components'
 
+export const Wrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+  overflow: scroll;
+  height: 150px;
+  max-height: 100%;
+`
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;

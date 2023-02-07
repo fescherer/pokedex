@@ -1,11 +1,21 @@
 import axios from 'axios'
 import Image from 'next/image'
 import React from 'react'
+import { EvolutionDetailType } from 'types/Pokemon/Evolution'
+import { ItemType } from 'types/Pokemon/Item'
 import * as S from './styles'
 
-export default function PokemonDetailEvolution({ data }: any) {
-  const [itemSpriteHeld, setItemSpriteHeld] = React.useState<any>(null)
-  const [itemSprite, setItemSprite] = React.useState<any>(null)
+type PokemonDetailEvolutionProps = {
+  data: EvolutionDetailType
+}
+
+export default function PokemonDetailEvolution({
+  data
+}: PokemonDetailEvolutionProps) {
+  const [itemSpriteHeld, setItemSpriteHeld] = React.useState<ItemType | null>(
+    null
+  )
+  const [itemSprite, setItemSprite] = React.useState<ItemType | null>(null)
 
   React.useEffect(() => {
     if (data?.item)
@@ -54,9 +64,9 @@ export default function PokemonDetailEvolution({ data }: any) {
 
       {data.needs_overworld_rain && <span>{data.needs_overworld_rain}</span>}
 
-      {data.party_species && <span>{data.party_species}</span>}
+      {/* {data.party_species && <span>{data.party_species}</span>} */}
 
-      {data.party_type && <span> {data.party_type}</span>}
+      {/* {data.party_type && <span> {data.party_type}</span>} */}
 
       {data.relative_physical_stats && (
         <span> {data.relative_physical_stats} </span>
@@ -64,7 +74,7 @@ export default function PokemonDetailEvolution({ data }: any) {
 
       {data.time_of_day && <span>{data.time_of_day}</span>}
 
-      {data.trade_species && <span>{data.trade_species} </span>}
+      {/* {data.trade_species && <span>{data.trade_species} </span>} */}
 
       {data.trigger && <span>{data.trigger.name}</span>}
 

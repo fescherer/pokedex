@@ -1,4 +1,4 @@
-import Filter from 'compoents/Filter'
+import SearchFilter from 'compoents/SearchFilter'
 import { LogoIcon } from 'icons/applogo'
 import * as S from './styles'
 
@@ -9,7 +9,7 @@ export default function Header() {
         <LogoIcon />
         <S.Title>Pokedex</S.Title>
       </S.Container>
-      <Filter />
+      <SearchFilter />
     </S.Wrapper>
   )
 }

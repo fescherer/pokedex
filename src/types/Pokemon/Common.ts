@@ -1,3 +1,5 @@
+import { MachineType } from './Machine'
+
 export type NamedAPIType = {
   name: string
   url: string
@@ -36,4 +38,21 @@ export type FlavorTextType = {
 export type DescriptionType = {
   description: string
   language: NamedAPIType
+}
+
+export type VerboseEffectType = {
+  effect: string
+  short_effect: string
+  language: NamedAPIType
+}
+
+export type VersionGroupFlavorTextType = {
+  text: string
+  language: NamedAPIType
+  version_group: NamedAPIType
+}
+
+export type MachineVersionDetailType = {
+  machine: MachineType
+  version_group: NamedAPIType
 }

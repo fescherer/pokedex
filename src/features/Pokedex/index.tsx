@@ -5,10 +5,16 @@ import React from 'react'
 import { PokemonType } from 'types/Pokemon/Pokemon'
 import axios from 'axios'
 import { PokemonDetail } from 'features/PokemonDetail'
+import { useForm } from 'react-hook-form'
+import { NamedAPIType } from 'types/Pokemon/Common'
+import { filterData } from 'util/functions'
 
-let counter = 0
+const counter = 0
 
 export function Pokedex() {
+  const { watch } = useForm()
+  const search = watch('search-input')
+
   // const [counter, setCounter] = React.useState(-20)
   // const [data, setData] = React.useState<PokemonType[]>([])
 
@@ -29,37 +35,50 @@ export function Pokedex() {
   //   })
   // }
 
-  // Para pegar a imagem é só passar o id
+  // *****************************************************************************
 
-  const [data, setData] = React.useState<PokemonType[]>([])
+  // const [data, setData] = React.useState<PokemonType[]>([])
 
-  const loadMore = async () => {
-    const urls: string[] = []
+  // const loadMore = async () => {
+  //   const urls: string[] = []
 
-    for (let i = counter + 1; i <= counter + 20; i++) {
-      urls.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
-    }
+  //   for (let i = counter + 1; i <= counter + 20; i++) {
+  //     urls.push(`https://pokeapi.co/api/v2/pokemon/${i}/`)
+  //   }
 
-    counter = counter + 20
+  //   counter = counter + 20
 
-    axios.all(urls.map((endpoint) => axios.get(endpoint))).then((data) => {
-      const onlyData: PokemonType[] = data.map((url) => url.data)
+  //   axios.all(urls.map((endpoint) => axios.get(endpoint))).then((data) => {
+  //     const onlyData: PokemonType[] = data.map((url) => url.data)
 
-      setData((prev) => [...prev, ...onlyData])
-    })
-  }
+  //     setData((prev) => [...prev, ...onlyData])
+  //   })
+  // }
+
+  // React.useEffect(() => {
+  //   loadMore()
+  // }, [])
+  // console.log(data, 'data')
+
+  const [pokeData, setPokeData] = React.useState<NamedAPIType[]>([])
+  const [pokeDataFiltered, setPokeDataFiltered] = React.useState<
+    NamedAPIType[]
+  >([])
 
   React.useEffect(() => {
-    loadMore()
+    axios.get('https://pokeapi.co/api/v2/pokemon?limit=-1').then((response) => {
+      setPokeDataFiltered(response.data.results)
+    })
   }, [])
-  console.log(data, 'data')
+
+  const filteredData = filterData(pokeData, search)
 
   return (
     <S.Wrapper>
       <Dialog.Root>
         <S.Container>
-          {data.map((pokemon) => (
-            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          {filteredData.map((pokemon) => (
+            <PokemonCard key={pokemon.name} pokemon={pokemon} />
           ))}
         </S.Container>
         <Dialog.Portal>
@@ -71,7 +90,7 @@ export function Pokedex() {
         </Dialog.Portal>
       </Dialog.Root>
 
-      <S.LoadMoreButton onClick={loadMore}>Load More</S.LoadMoreButton>
+      {/* <S.LoadMoreButton onClick={loadMore}>Load More</S.LoadMoreButton> */}
     </S.Wrapper>
   )
 }
