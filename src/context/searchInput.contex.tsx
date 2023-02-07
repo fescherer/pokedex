@@ -20,3 +20,5 @@ export const SearchProvider = ({ children }: Children) => {
     </SearchContext.Provider>
   )
 }
+
+export const useSearchContext = () => React.useContext(SearchContext)

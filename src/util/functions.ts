@@ -49,7 +49,7 @@ export function getIDByURL(url: string) {
   return urlSplitted[urlSplitted.length - 2]
 }
 
-export function filterData(data: NamedAPIType[], filter: string) {
+export function filterData(data: NamedAPIType[], filter?: string) {
   if (!filter) return data
   else {
     const rg = new RegExp(`^(?=.*\\b${filter}).*$`, 'gmi')
