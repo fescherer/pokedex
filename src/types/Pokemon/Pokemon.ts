@@ -1,6 +1,6 @@
 import { NamedAPIType, PokemonHeldItemType, VersionGameType } from './Common'
 import { EvolutionChainType } from './Evolution'
-import { LocationType, PokemonEncounterType } from './Location'
+import { PokemonEncounterType } from './Location'
 import { PokemonSpeciesFullDataType } from './Species'
 
 export type PokemonType = {
@@ -18,7 +18,7 @@ export type PokemonType = {
   location_area_encounters: string
   moves: PokemonMoveType[]
   past_types: PokemonTypePastType[]
-  sprites: PokemonSpritesType | any
+  sprites: PokemonSpritesType
   species: NamedAPIType
   stats: PokemonStatType[]
   types: PokemonTypeType[]

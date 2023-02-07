@@ -4,7 +4,6 @@ import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
 import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
 import PokemonEvolution from './components/PokemonEvolution'
-import * as S from './styles'
 
 export function PokemonFeatures() {
   const { pokemonDetail: pokemon, setPokemonDetail } = usePokemonDetailContext()
@@ -14,40 +13,13 @@ export function PokemonFeatures() {
     if (!pokemon || pokemon.speciesFullData) return
 
     axios.get(pokemon.species.url).then((response) => {
-      axios.get(response.data.evolution_chain.url).then((resposeEvolution) => {
-        console.log(resposeEvolution.data, '1')
-
-        const dataaa = pokemon?.evolution?.chain.evolves_to.map((poke) => {
-          return poke
-        })
-
-        // <span>
-        //   {pokemon.evolution.chain.evolves_to.map((poke) => {
-        //     return (
-        //       <div key={poke.species.name}>
-        //         <div>{poke.species.name}</div>
-        //         {poke.evolves_to.map((pokeLast) => {
-        //           return (
-        //             <div key={pokeLast.species.name}>
-        //               <div>{pokeLast.species.name}</div>
-        //             </div>
-        //           )
-        //         })}
-        //       </div>
-        //     )
-        //   })}
-        // </span>
-
-        setPokemonDetail((prev) => {
-          if (prev)
-            return {
-              ...prev,
-              speciesFullData: response.data,
-              evolution: resposeEvolution.data,
-              evolutionSprites: []
-            }
-          else return null
-        })
+      setPokemonDetail((prev) => {
+        if (prev)
+          return {
+            ...prev,
+            speciesFullData: response.data
+          }
+        else return null
       })
     })
   }, [pokemon, setPokemonDetail])
@@ -77,48 +49,7 @@ export function PokemonFeatures() {
         <span>{`Generation: ${pokemon.speciesFullData.generation.name}`}</span>
       </div> */}
 
-      {/* <div>
-        <span> {pokemon.evolution.chain.species.name}</span>
-        <span>
-          {pokemon.evolution.chain.evolves_to.map((poke) => {
-            return (
-              <div key={poke.species.name}>
-                <div>{poke.species.name}</div>
-                {poke.evolves_to.map((pokeLast) => {
-                  return (
-                    <div key={pokeLast.species.name}>
-                      <div>{pokeLast.species.name}</div>
-                    </div>
-                  )
-                })}
-              </div>
-            )
-          })}
-        </span>
-      </div> */}
-
       <PokemonEvolution pokemon={pokemon.id} />
-
-      {/* <S.PokemonChain>
-        <S.PokemonChainItem
-          alt="Pokemon Pre evolution"
-          src={pokemon?.sprites}
-          width={100}
-          height={100}
-        />
-        <S.PokemonItem
-          alt="Pokemon"
-          src={pokemon?.sprites}
-          width={120}
-          height={120}
-        />
-        <S.PokemonChainItem
-          alt="Pokemon evolution"
-          src={pokemon?.sprites}
-          width={100}
-          height={100}
-        />
-      </S.PokemonChain> */}
     </div>
   )
 }
