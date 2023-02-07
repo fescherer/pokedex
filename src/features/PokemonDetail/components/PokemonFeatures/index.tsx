@@ -3,6 +3,7 @@ import { Title } from 'compoents/Title'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
 import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
+import PokemonEvolution from './components/PokemonEvolution'
 import * as S from './styles'
 
 export function PokemonFeatures() {
@@ -64,9 +65,9 @@ export function PokemonFeatures() {
 
   return (
     <div>
-      <Title color={pokemonColor}>Forma física</Title>
+      <Title color={pokemonColor}>Evolução</Title>
 
-      <S.PokemonFeatureContainer>
+      {/* <S.PokemonFeatureContainer>
         <span>{pokemon?.height}</span>
         <S.Divider decorative orientation="vertical" />
         <span>{pokemon?.weight}</span>
@@ -74,9 +75,9 @@ export function PokemonFeatures() {
 
       <div>
         <span>{`Generation: ${pokemon.speciesFullData.generation.name}`}</span>
-      </div>
+      </div> */}
 
-      <div>
+      {/* <div>
         <span> {pokemon.evolution.chain.species.name}</span>
         <span>
           {pokemon.evolution.chain.evolves_to.map((poke) => {
@@ -94,9 +95,11 @@ export function PokemonFeatures() {
             )
           })}
         </span>
-      </div>
+      </div> */}
 
-      <S.PokemonChain>
+      <PokemonEvolution pokemon={pokemon.id} />
+
+      {/* <S.PokemonChain>
         <S.PokemonChainItem
           alt="Pokemon Pre evolution"
           src={pokemon?.sprites}
@@ -115,7 +118,7 @@ export function PokemonFeatures() {
           width={100}
           height={100}
         />
-      </S.PokemonChain>
+      </S.PokemonChain> */}
     </div>
   )
 }
