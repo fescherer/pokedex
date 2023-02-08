@@ -7,6 +7,7 @@ import { filterData } from 'util/functions'
 import { useSearchContext } from 'context/searchInput.contex'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as S from './styles'
+import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 
 export function Pokedex() {
   const { search } = useSearchContext()
@@ -14,6 +15,7 @@ export function Pokedex() {
   const [pokeDataFiltered, setPokeDataFiltered] = React.useState<
     NamedAPIType[]
   >([])
+  const { setPokemonDetail } = usePokemonDetailContext()
 
   React.useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokemon?limit=-1').then((response) => {
@@ -27,6 +29,10 @@ export function Pokedex() {
     console.log(filteredData)
   }, [pokeData, search])
 
+  function closeDialog() {
+    setPokemonDetail(null)
+  }
+
   return (
     <S.Wrapper>
       <Dialog.Root>
@@ -35,11 +41,10 @@ export function Pokedex() {
             <PokemonCard key={pokemon.name} pokemon={pokemon} />
           ))}
         </S.Container>
+        <S.DialogOverlay />
         <Dialog.Portal>
-          <S.DialogOverlay />
-          <S.PokeDialog>
+          <S.PokeDialog onInteractOutside={closeDialog}>
             <PokemonDetail />
-            <Dialog.Close />
           </S.PokeDialog>
         </Dialog.Portal>
       </Dialog.Root>

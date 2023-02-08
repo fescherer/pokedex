@@ -1,3 +1,4 @@
+import Loader from 'compoents/Loader'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import Image from 'next/image'
 import { ArrowLeft } from 'phosphor-react'
@@ -7,7 +8,12 @@ import * as S from './styles'
 export function PokemonDetail() {
   const { pokemonDetail: pokemon } = usePokemonDetailContext()
 
-  if (!pokemon) return <div>Loading...</div>
+  if (!pokemon)
+    return (
+      <S.LoadingWrapper>
+        <Loader />
+      </S.LoadingWrapper>
+    )
 
   return (
     <S.Wrapper>
