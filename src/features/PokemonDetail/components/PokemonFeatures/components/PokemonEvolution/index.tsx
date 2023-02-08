@@ -1,8 +1,10 @@
 import axios from 'axios'
+import Loader from 'compoents/Loader'
 import Image from 'next/image'
 import React from 'react'
 import { ChainLinkType, EvolutionChainType } from 'types/Pokemon/Evolution'
 import { PokemonSpeciesFullDataType } from 'types/Pokemon/Species'
+import { getIDByURL } from 'util/functions'
 import StageEvolution from '../StageEvolution'
 import * as S from './styles'
 
@@ -27,19 +29,19 @@ export default function PokemonEvolution({ pokemon }: PokemonEvolutionProps) {
       })
   }, [pokemon])
 
-  function getID(url: string) {
-    const urlSplitted = url.split('/')
-    return urlSplitted[urlSplitted.length - 2]
-  }
-
-  if (!pokeEvo) return <></>
+  if (!pokeEvo)
+    return (
+      <div style={{ transform: 'scale(0.5)' }}>
+        <Loader />
+      </div>
+    )
 
   return (
     <S.Wrapper>
       <S.PokemonCard>
         <S.PokemonCardTitle>{pokeEvo.species?.name}</S.PokemonCardTitle>
         <Image
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getID(
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
             pokeEvo.species?.url
           )}.png`}
           width={75}

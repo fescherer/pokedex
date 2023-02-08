@@ -3,6 +3,7 @@ import Image from 'next/image'
 import React from 'react'
 import { EvolutionDetailType } from 'types/Pokemon/Evolution'
 import { ItemType } from 'types/Pokemon/Item'
+import { getIDByURL } from 'util/functions'
 import * as S from './styles'
 
 type PokemonDetailEvolutionProps = {
@@ -64,9 +65,27 @@ export default function PokemonDetailEvolution({
 
       {data.needs_overworld_rain && <span>{data.needs_overworld_rain}</span>}
 
-      {/* {data.party_species && <span>{data.party_species}</span>} */}
+      {data.party_species && (
+        <div>
+          <span>Pokémon na party</span>
+          <span>{data.party_species.name}</span>
+          <Image
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
+              data.party_species?.url
+            )}.png`}
+            width={30}
+            height={30}
+            alt=""
+          />
+        </div>
+      )}
 
-      {/* {data.party_type && <span> {data.party_type}</span>} */}
+      {data.party_type && (
+        <div>
+          <span>Algum pokémon do tipo na party</span>
+          <span>{data.party_type.name}</span>
+        </div>
+      )}
 
       {data.relative_physical_stats && (
         <span> {data.relative_physical_stats} </span>
@@ -74,7 +93,19 @@ export default function PokemonDetailEvolution({
 
       {data.time_of_day && <span>{data.time_of_day}</span>}
 
-      {/* {data.trade_species && <span>{data.trade_species} </span>} */}
+      {data.trade_species && (
+        <div>
+          <span>{data.trade_species.name}</span>
+          <Image
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
+              data.trade_species?.url
+            )}.png`}
+            width={30}
+            height={30}
+            alt=""
+          />
+        </div>
+      )}
 
       {data.trigger && <span>{data.trigger.name}</span>}
 

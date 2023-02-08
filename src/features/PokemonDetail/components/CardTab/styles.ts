@@ -15,17 +15,6 @@ export const ItemTab = styled(Tabs.List)`
 `
 
 export const Trigger = styled(Tabs.Trigger)<{ color: string }>`
-  @keyframes contentShow {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,7 +24,6 @@ export const Trigger = styled(Tabs.Trigger)<{ color: string }>`
   transition: all 0.3s;
 
   &:hover {
-    animation: contentShow 0.5s;
     opacity: 0.5;
   }
 

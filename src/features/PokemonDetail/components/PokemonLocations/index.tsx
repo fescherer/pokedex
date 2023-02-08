@@ -2,36 +2,39 @@ import axios from 'axios'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
 import { PokemonEncounterType } from 'types/Pokemon/Location'
-import { getTranslationName } from 'util/functions'
 
 export default function PokemonLocations() {
   const { pokemonDetail: pokemon, setPokemonDetail } = usePokemonDetailContext()
+  const [pokeLocation, setPokeLocation] = React.useState<
+    PokemonEncounterType[]
+  >([])
 
   React.useEffect(() => {
     if (!pokemon || pokemon.speciesFullData) return
+    let locationDataCustom: PokemonEncounterType[] = []
 
-    axios.get(pokemon.location_area_encounters).then((response) => {
-      let locationDataCustom: PokemonEncounterType[] = []
-      response.data.map((location: PokemonEncounterType) => {
-        if (location?.location_area?.url)
-          axios
-            .get(location.location_area.url)
-            .then((responseLocationDetail) => {
-              locationDataCustom = [
-                ...locationDataCustom,
-                {
-                  ...location,
-                  version_details: responseLocationDetail.data
-                }
-              ]
-            })
+    axios
+      .get(pokemon.location_area_encounters)
+      .then((response) => {
+        response.data.map((location: PokemonEncounterType) => {
+          if (location?.location_area?.url)
+            axios
+              .get(location.location_area.url)
+              .then((responseLocationDetail) => {
+                locationDataCustom = [
+                  ...locationDataCustom,
+                  {
+                    ...location,
+                    version_details: responseLocationDetail.data
+                  }
+                ]
+              })
+        })
       })
 
-      setPokemonDetail((prev) => {
-        if (prev) return { ...prev, location: locationDataCustom }
-        else return null
+      .then(() => {
+        setPokeLocation(locationDataCustom)
       })
-    })
   }, [pokemon, setPokemonDetail])
 
   // React.useEffect(() => {
@@ -58,11 +61,11 @@ export default function PokemonLocations() {
 
   console.log(pokemon)
 
-  if (!pokemon || !pokemon.location) return <div>Loading...</div>
+  if (!pokeLocation) return <div>Loading...</div>
 
   return (
     <div>
-      {pokemon?.location.map((location) => (
+      {pokeLocation.map((location) => (
         <div key={location.location_area.name}>
           {/* <span>
             Localização:

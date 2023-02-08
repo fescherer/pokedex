@@ -2,10 +2,11 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 1rem;
   overflow: scroll;
   height: 150px;
   max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
 `
 
 export const Container = styled.div`

@@ -24,8 +24,7 @@ export function PokemonFeatures() {
     })
   }, [pokemon, setPokemonDetail])
 
-  if (!pokemon || !pokemon.speciesFullData || !pokemon.evolution)
-    return <div>Loading...</div>
+  if (!pokemon || !pokemon.speciesFullData) return <div>Loading...</div>
 
   const pokemonColor =
     PokemonTypeColors[
