@@ -1,8 +1,10 @@
 import axios from 'axios'
 import React from 'react'
+import { PokemonEncounterType } from 'types/Pokemon/Location'
 
 export default function Location() {
-  const [pokeLocation, setPokeLocation] = React.useState<any>()
+  const [pokeLocation, setPokeLocation] =
+    React.useState<PokemonEncounterType[]>()
 
   React.useEffect(() => {
     axios
