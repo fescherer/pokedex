@@ -2,9 +2,10 @@ import axios from 'axios'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
 import { PokemonEncounterType } from 'types/Pokemon/Location'
+import * as S from './styles'
 
 export default function PokemonLocations() {
-  const { pokemonDetail: pokemon, setPokemonDetail } = usePokemonDetailContext()
+  const { pokemonDetail: pokemon } = usePokemonDetailContext()
   const [pokeLocation, setPokeLocation] = React.useState<
     PokemonEncounterType[]
   >([])
@@ -47,7 +48,10 @@ export default function PokemonLocations() {
   return (
     <div>
       {pokeLocation.map((location) => (
-        <div key={location.location_area.name} style={{ marginBottom: '1rem' }}>
+        <S.LocationCard
+          key={location.location_area.name}
+          style={{ marginBottom: '1rem' }}
+        >
           {/* <span>
             Localização:
             {
@@ -58,37 +62,47 @@ export default function PokemonLocations() {
             }
           </span> */}
 
-          <span>{location.location_area.name}</span>
-          <span>
+          <S.LocationTitle>{location.location_area.name}</S.LocationTitle>
+          <S.VersionContainer>
             {location.version_details.map((version) => (
               <div key={version.version.name}>
-                <span>Versão: {version.version.name}</span>
-                <div>
-                  <span>Modos de encontro: </span>
-                  {version.encounter_details.map((encounter, index) => (
-                    <div key={index}>
-                      {encounter.condition_values.length !== 0 && (
-                        <div>
-                          {encounter.condition_values.map((conditional) => (
-                            <span key={conditional.name}>
-                              {conditional.name}
-                            </span>
-                          ))}
-                        </div>
-                      )}
+                <>
+                  <S.TitleGameVersion>
+                    Versão: {version.version.name}
+                  </S.TitleGameVersion>
 
-                      <span>{`Chance: ${encounter.chance}%`}</span>
+                  <S.EnconterContainer>
+                    {version.encounter_details.map((encounter, index) => (
+                      <S.EnconterCard key={index}>
+                        <span>{`${encounter.method.name}`}</span>
+                        <span>{`${encounter.chance}%`}</span>
+                        <span>{`LV. (${encounter.min_level}-${encounter.max_level})`}</span>
 
-                      <span>{`Min: ${encounter.min_level} x Máx: ${encounter.max_level}`}</span>
+                        {encounter.condition_values.length !== 0 && (
+                          <div>
+                            {encounter.condition_values.map((conditional) => (
+                              <span key={conditional.name}>
+                                {conditional.name}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </S.EnconterCard>
+                    ))}
+                  </S.EnconterContainer>
+                </>
 
-                      <span>{`Método: ${encounter.method.name}`}</span>
-                    </div>
-                  ))}
-                </div>
+                <div
+                  style={{
+                    backgroundColor: 'red',
+                    width: '100%',
+                    height: '1px'
+                  }}
+                ></div>
               </div>
             ))}
-          </span>
-        </div>
+          </S.VersionContainer>
+        </S.LocationCard>
       ))}
     </div>
   )
