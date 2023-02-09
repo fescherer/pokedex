@@ -54,9 +54,10 @@ export const Container = styled.div<{ type: string }>`
     PokemonTypeColors[props.type as keyof typeof PokemonTypeColors]};
   height: 100%;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
+  position: relative;
 `
 
 export const HeaderContainer = styled.div`
@@ -66,7 +67,7 @@ export const HeaderContainer = styled.div`
   width: 100%;
   font-weight: 600;
   padding: 1rem;
-  height: 30%;
+  min-height: 30%;
 `
 
 export const HeaderTitleContainer = styled.div`
@@ -86,7 +87,6 @@ export const DataContainer = styled.div`
 
   margin: 0.2rem;
   border-radius: 5px;
-  height: 70%;
 
   position: relative;
 `
@@ -94,11 +94,11 @@ export const DataContainer = styled.div`
 export const ImageContainer = styled.div`
   image-rendering: pixelated;
   position: absolute;
-  top: -30%;
+  top: 10%;
   left: 50%;
   translate: -50%;
   border: 1px solid black;
-
+  z-index: 100;
   display: flex;
   flex-direction: column;
 `

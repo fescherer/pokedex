@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
-  overflow: scroll;
   height: 150px;
   max-height: 100%;
   max-width: 100%;

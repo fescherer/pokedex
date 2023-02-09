@@ -26,24 +26,24 @@ export function PokemonDetail() {
           <S.Number>#{String(pokemon.id).padStart(5, '0')}</S.Number>
         </S.HeaderContainer>
 
+        <S.ImageContainer>
+          <Image
+            src={pokemon.sprites.front_default}
+            width={150}
+            height={150}
+            alt=""
+          />
+
+          <S.TypeContainer>
+            {pokemon.types.map((type) => (
+              <S.PokemonType type={type.type.name} key={type.type.name}>
+                {type.type.name}
+              </S.PokemonType>
+            ))}
+          </S.TypeContainer>
+        </S.ImageContainer>
+
         <S.DataContainer>
-          <S.ImageContainer>
-            <Image
-              src={pokemon.sprites.front_default}
-              width={150}
-              height={150}
-              alt=""
-            />
-
-            <S.TypeContainer>
-              {pokemon.types.map((type) => (
-                <S.PokemonType type={type.type.name} key={type.type.name}>
-                  {type.type.name}
-                </S.PokemonType>
-              ))}
-            </S.TypeContainer>
-          </S.ImageContainer>
-
           <CardTab />
         </S.DataContainer>
       </S.Container>

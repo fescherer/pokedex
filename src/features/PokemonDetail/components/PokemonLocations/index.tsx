@@ -10,32 +10,12 @@ export default function PokemonLocations() {
   >([])
 
   React.useEffect(() => {
-    if (!pokemon || pokemon.speciesFullData) return
-    let locationDataCustom: PokemonEncounterType[] = []
+    if (!pokemon) return
 
-    axios
-      .get(pokemon.location_area_encounters)
-      .then((response) => {
-        response.data.map((location: PokemonEncounterType) => {
-          if (location?.location_area?.url)
-            axios
-              .get(location.location_area.url)
-              .then((responseLocationDetail) => {
-                locationDataCustom = [
-                  ...locationDataCustom,
-                  {
-                    ...location,
-                    version_details: responseLocationDetail.data
-                  }
-                ]
-              })
-        })
-      })
-
-      .then(() => {
-        setPokeLocation(locationDataCustom)
-      })
-  }, [pokemon, setPokemonDetail])
+    axios.get(pokemon.location_area_encounters).then((response) => {
+      setPokeLocation(response.data)
+    })
+  }, [pokemon])
 
   // React.useEffect(() => {
   //   if (!pokemon || pokemon.location) return
@@ -59,14 +39,15 @@ export default function PokemonLocations() {
   //   getPokemonLocations()
   // }, [pokemon, setPokemonDetail])
 
-  console.log(pokemon)
+  // console.log(pokemon)
+  console.log(pokeLocation)
 
   if (!pokeLocation) return <div>Loading...</div>
 
   return (
     <div>
       {pokeLocation.map((location) => (
-        <div key={location.location_area.name}>
+        <div key={location.location_area.name} style={{ marginBottom: '1rem' }}>
           {/* <span>
             Localização:
             {
