@@ -14,6 +14,17 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
   const onMouseEnter = () => setIsHovered(true)
   const onMouseLeave = () => setIsHovered(false)
 
+  const [SpriteSrc, setSpriteSrc] = React.useState(
+    `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
+      pokemon?.url
+    )}.png`
+  )
+  const [animationSpriteSrc, setAnimationSpriteSrc] = React.useState(
+    `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${getIDByURL(
+      pokemon?.url
+    )}.gif`
+  )
+
   const { setPokemonDetail } = usePokemonDetailContext()
 
   const savePokemonDetail = (pokemon: NamedAPIType) => {
@@ -46,21 +57,31 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
       </S.Header>
       {isHovering ? (
         <S.PokeImage
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${getIDByURL(
-            pokemon?.url
-          )}.gif`}
+          src={animationSpriteSrc}
           width={96}
           height={96}
           alt={pokemon.name}
+          onError={() =>
+            setSpriteSrc(
+              `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
+                pokemon?.url
+              )}.png`
+            )
+          }
         />
       ) : (
         <S.PokeImage
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
-            pokemon?.url
-          )}.png`}
+          src={SpriteSrc}
           width={96}
           height={96}
           alt={pokemon.name}
+          onError={() =>
+            setAnimationSpriteSrc(
+              `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
+                pokemon?.url
+              )}.png`
+            )
+          }
         />
       )}
     </S.Wrapper>

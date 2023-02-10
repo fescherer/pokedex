@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Image from 'next/image'
 import React from 'react'
+import { PokemonEvolutionMethods } from 'types/enum/PokemonEvolutionMethods'
 import { EvolutionDetailType } from 'types/Pokemon/Evolution'
 import { ItemType } from 'types/Pokemon/Item'
 import { getIDByURL } from 'util/functions'
@@ -107,7 +108,15 @@ export default function PokemonDetailEvolution({
         </div>
       )}
 
-      {data.trigger && <span>{data.trigger.name}</span>}
+      {data.trigger && (
+        <span>
+          {
+            PokemonEvolutionMethods[
+              data.trigger.name as keyof typeof PokemonEvolutionMethods
+            ]
+          }
+        </span>
+      )}
 
       {data.turn_upside_down && <span> {data.turn_upside_down} </span>}
     </S.EvolutionIndicator>
