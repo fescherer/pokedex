@@ -16,6 +16,7 @@ export const PokemonCardTitle = styled.span`
   font-weight: 600;
   text-transform: capitalize;
   font-size: 12px;
+  color: ${({ theme }) => theme.colors.typografy.title};
 `
 
 export const PokemonCard = styled.div`

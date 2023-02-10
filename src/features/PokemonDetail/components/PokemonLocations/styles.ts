@@ -14,6 +14,7 @@ export const LocationCard = styled.div`
 `
 
 export const LocationTitle = styled.span`
+  color: ${({ theme }) => theme.colors.typografy.title};
   font-size: 16px;
   font-weight: 600;
 `

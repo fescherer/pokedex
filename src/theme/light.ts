@@ -16,7 +16,8 @@ export const LightTheme: ThemeConfig = {
       foreground: palette.white as string
     },
     typografy: {
-      text: palette.white as string,
+      text: palette.dark_gray[400],
+      subtitle: palette.dark_gray[50],
       title: palette.black as string
     },
     util: {

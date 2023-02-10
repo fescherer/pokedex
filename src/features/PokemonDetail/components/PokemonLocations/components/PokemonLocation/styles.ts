@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const EncounterTitle = styled.span`
   font-weight: 600;
   font-size: 14px;
-  color: ${({ theme }) => theme.colors.default.black};
+  color: ${({ theme }) => theme.colors.typografy.title};
 `
 
 export const PercentageContainer = styled.div`

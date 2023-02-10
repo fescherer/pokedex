@@ -17,6 +17,7 @@ export type Colors = {
   }
   typografy: {
     text: string
+    subtitle: string
     title: string
   }
   util: {
