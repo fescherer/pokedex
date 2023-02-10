@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { media } from 'util/breakpoints'
 
 export const Wrapper = styled.div`
-  background-color: #d31c1c;
+  background-color: ${({ theme }) => theme.colors.main.pokemon};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 
 export const Title = styled.h1`
   font-size: 40px;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.default.white};
 `
 export const Container = styled.div`
   display: flex;

@@ -29,7 +29,7 @@ export const ContentCard = styled(HoverCard.Content)`
   border-radius: 6px;
   padding: 1rem;
 
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.default.white};
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
     hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   animation-duration: 400ms;
@@ -38,7 +38,7 @@ export const ContentCard = styled(HoverCard.Content)`
 `
 
 export const ArrowCard = styled(HoverCard.Arrow)`
-  fill: #fff;
+  fill: ${({ theme }) => theme.colors.default.white};
 `
 
 export const TriggerCard = styled(HoverCard.Trigger)`
@@ -46,7 +46,7 @@ export const TriggerCard = styled(HoverCard.Trigger)`
   align-items: center;
   flex-direction: column;
   > * {
-    color: #000;
+    color: ${({ theme }) => theme.colors.default.black};
     cursor: pointer;
   }
 
@@ -59,5 +59,5 @@ export const TriggerCard = styled(HoverCard.Trigger)`
 
 export const WrapperHoverCard = styled.div`
   display: flex;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.default.white};
 `

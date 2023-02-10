@@ -5,6 +5,7 @@ export type Theme = {
 export type Colors = {
   main: {
     primary_01: string
+    pokemon: string
   }
   default: {
     white: string

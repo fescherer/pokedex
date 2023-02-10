@@ -4,7 +4,8 @@ export const palette: ColorPalette = {
   red: {
     100: '#FF476B',
     200: '#FF5252',
-    300: '#FF0000'
+    300: '#FF0000',
+    400: '#d31c1c'
   },
   green: {
     50: '#00C5A5',

@@ -64,8 +64,8 @@ export const PokeDialog = styled(Dialog.Content)``
 
 export const LoadMoreButton = styled.div`
   display: flex;
-  background-color: #d31c1c;
-  color: #fff;
+  background-color: ${({ theme }) => theme.colors.main.pokemon};
+  color: ${({ theme }) => theme.colors.default.white};
   padding: 1rem 5rem;
   border-radius: 10px;
   cursor: pointer;

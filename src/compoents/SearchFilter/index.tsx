@@ -1,10 +1,12 @@
 import { useSearchContext } from 'context/searchInput.contex'
 import { MagnifyingGlass } from 'phosphor-react'
 import React from 'react'
+import { useTheme } from 'styled-components'
 import * as S from './styles'
 
 export default function Filter() {
   const { search, setSearch } = useSearchContext()
+  const theme = useTheme()
 
   function handleChange(change: string) {
     setSearch(change)
@@ -22,7 +24,7 @@ export default function Filter() {
       />
 
       <S.SearchIconContainer>
-        <MagnifyingGlass size={16} color={'#000000'} />
+        <MagnifyingGlass size={16} color={theme.colors.default.black} />
       </S.SearchIconContainer>
     </S.Wrapper>
   )

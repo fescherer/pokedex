@@ -4,7 +4,8 @@ import { palette } from './palette'
 export const LightTheme: ThemeConfig = {
   colors: {
     main: {
-      primary_01: palette.blue[50]
+      primary_01: palette.blue[50],
+      pokemon: palette.red[400]
     },
     default: {
       white: palette.white as string,

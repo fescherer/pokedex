@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 `
 
 export const Input = styled.input`
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colors.default.white};
   display: flex;
   flex: 1;
   justify-content: center;
@@ -25,10 +25,10 @@ export const Input = styled.input`
   padding: 0.75rem 1rem;
   border: none;
   padding-right: 2rem;
-  color: #000;
+  color: ${({ theme }) => theme.colors.default.black};
 
   &:focus-within {
-    outline: 1px solid #000;
+    outline: 1px solid ${({ theme }) => theme.colors.default.black};
   }
 
   &::placeholder {

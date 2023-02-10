@@ -47,7 +47,7 @@ export const Loading = styled.div`
     }
   }
 
-  background-color: #d31c1c;
+  background-color: ${({ theme }) => theme.colors.main.pokemon};
   width: 15px;
   height: 15px;
   position: absolute;
