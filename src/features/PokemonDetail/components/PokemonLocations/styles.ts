@@ -14,6 +14,7 @@ export const LocationCard = styled.div`
 
 export const LocationTitle = styled.span`
   font-size: 16px;
+  font-weight: 600;
 `
 
 export const VersionContainer = styled.div`
@@ -22,9 +23,16 @@ export const VersionContainer = styled.div`
   gap: 1rem;
 `
 
-export const EnconterContainer = styled.div`
+export const Container = styled.div<{ hasDivider: boolean }>`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: ${(props) => (props.hasDivider ? '1.5rem' : '1rem')};
+`
+
+export const EnconterContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
 `
 
@@ -32,9 +40,12 @@ export const TitleGameVersion = styled.span`
   font-size: 12px;
 `
 
-export const EnconterCard = styled.div`
+export const EnconterCard = styled.div<{ color: string }>`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.25rem;
-  border: 1px solid red;
+  border: ${(props) => `1px solid ${props.color}`};
+  border-radius: 5px;
+  padding: 0.25rem;
 `

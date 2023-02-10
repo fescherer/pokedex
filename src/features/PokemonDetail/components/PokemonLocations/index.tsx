@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
+import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
 import { PokemonEncounterType } from 'types/Pokemon/Location'
+import PokemonLocation from './components/PokemonLocation'
 import * as S from './styles'
 
 export default function PokemonLocations() {
@@ -17,6 +19,13 @@ export default function PokemonLocations() {
       setPokeLocation(response.data)
     })
   }, [pokemon])
+
+  if (!pokeLocation || !pokemon) return <div>Loading...</div>
+
+  const pokemonColor =
+    PokemonTypeColors[
+      pokemon.types[0].type.name as keyof typeof PokemonTypeColors
+    ]
 
   // React.useEffect(() => {
   //   if (!pokemon || pokemon.location) return
@@ -43,8 +52,6 @@ export default function PokemonLocations() {
   // console.log(pokemon)
   console.log(pokeLocation)
 
-  if (!pokeLocation) return <div>Loading...</div>
-
   return (
     <div>
       {pokeLocation.map((location) => (
@@ -64,42 +71,23 @@ export default function PokemonLocations() {
 
           <S.LocationTitle>{location.location_area.name}</S.LocationTitle>
           <S.VersionContainer>
-            {location.version_details.map((version) => (
-              <div key={version.version.name}>
-                <>
-                  <S.TitleGameVersion>
-                    Versão: {version.version.name}
-                  </S.TitleGameVersion>
+            {location.version_details.map((version, versionIndex) => (
+              <S.Container
+                key={version.version.name}
+                hasDivider={versionIndex < location.version_details.length - 1}
+              >
+                <S.TitleGameVersion>
+                  Versão: {version.version.name}
+                </S.TitleGameVersion>
 
-                  <S.EnconterContainer>
-                    {version.encounter_details.map((encounter, index) => (
-                      <S.EnconterCard key={index}>
-                        <span>{`${encounter.method.name}`}</span>
-                        <span>{`${encounter.chance}%`}</span>
-                        <span>{`LV. (${encounter.min_level}-${encounter.max_level})`}</span>
-
-                        {encounter.condition_values.length !== 0 && (
-                          <div>
-                            {encounter.condition_values.map((conditional) => (
-                              <span key={conditional.name}>
-                                {conditional.name}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </S.EnconterCard>
-                    ))}
-                  </S.EnconterContainer>
-                </>
-
-                <div
-                  style={{
-                    backgroundColor: 'red',
-                    width: '100%',
-                    height: '1px'
-                  }}
-                ></div>
-              </div>
+                <S.EnconterContainer>
+                  {version.encounter_details.map((encounter, index) => (
+                    <S.EnconterCard color={pokemonColor} key={index}>
+                      <PokemonLocation location={encounter}></PokemonLocation>
+                    </S.EnconterCard>
+                  ))}
+                </S.EnconterContainer>
+              </S.Container>
             ))}
           </S.VersionContainer>
         </S.LocationCard>
