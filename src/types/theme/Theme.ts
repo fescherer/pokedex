@@ -18,11 +18,17 @@ export type Colors = {
   typografy: {
     text: string
     subtitle: string
+    placeholder: string
     title: string
   }
   util: {
     hover: string
     divider: string
+    overlay: string
+    footer: {
+      text: string
+      icon: string
+    }
   }
 }
 

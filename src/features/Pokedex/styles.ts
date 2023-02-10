@@ -8,7 +8,8 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   padding: 1rem;
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px 0px;
+  box-shadow: ${({ theme }) =>
+    `${theme.colors.typografy.placeholder} 0px 2px 4px 0px`};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +56,7 @@ export const DialogOverlay = styled(Dialog.Overlay)`
   .DialogContent[data-state='closed'] {
     animation: fadeOut 300ms ease-in;
   }
-  background-color: #00000055;
+  background-color: ${({ theme }) => theme.colors.util.overlay};
   position: fixed;
   inset: 0;
 `

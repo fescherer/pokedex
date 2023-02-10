@@ -26,7 +26,7 @@ export const Title = styled.span<{ color: string }>`
 export const Divider = styled(Separator.Root)`
   height: 20px;
   width: 1px;
-  background-color: #e0e0e0;
+  background-color: ${({ theme }) => theme.colors.util.divider};
   display: flex;
   align-self: stretch;
   justify-self: stretch;
@@ -34,5 +34,5 @@ export const Divider = styled(Separator.Root)`
 
 export const Value = styled.span`
   font-weight: 400;
-  color: #212121;
+  color: ${({ theme }) => theme.colors.typografy.text};
 `

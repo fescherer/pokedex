@@ -24,7 +24,7 @@ export default function Filter() {
       />
 
       <S.SearchIconContainer>
-        <MagnifyingGlass size={16} color={theme.colors.default.black} />
+        <MagnifyingGlass size={16} color={theme.colors.typografy.text} />
       </S.SearchIconContainer>
     </S.Wrapper>
   )

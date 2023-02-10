@@ -53,7 +53,7 @@ export const TriggerCard = styled(HoverCard.Trigger)`
 
   &:hover {
     > * {
-      color: #808080;
+      opacity: 0.8;
     }
   }
 `

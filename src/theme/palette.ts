@@ -13,6 +13,7 @@ export const palette: ColorPalette = {
     200: '#008000'
   },
   gray: {
+    50: '#e0e0e0',
     100: '#F8F8F8',
     200: '#F5F8FA',
     300: '#F1F5F9',

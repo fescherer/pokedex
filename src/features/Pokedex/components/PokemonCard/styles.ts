@@ -31,7 +31,7 @@ export const Header = styled.div`
 
 export const Number = styled.span`
   align-self: flex-end;
-  color: #00000080;
+  color: ${({ theme }) => theme.colors.typografy.subtitle};
   font-size: 8px;
 `
 

@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
+  justify-content: center;
+
   max-height: 100%;
   max-width: 100%;
 `
@@ -23,5 +25,6 @@ export const PokemonCard = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+
   gap: 0.25rem;
 `

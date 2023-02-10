@@ -7,10 +7,10 @@ export const author = {
 
 export const appConfig = {
   appName: 'FelipeSchererPortifolio',
-  title: 'Boilerplate',
-  metaTitleContent: 'Boilerplate for projects in Next JS',
+  title: 'Pokedex',
+  metaTitleContent: 'Pokedex to see pokemon details',
   metaTagName: 'Created by Felipe Scherer',
-  metaTagContent: 'Portifolio do Felipe Scherer',
+  metaTagContent: 'Pokedex',
   metaTagOgContent: 'Facebook meta tag',
   createYear: '2023'
 }

@@ -3,8 +3,6 @@ import { media } from 'util/breakpoints'
 
 export const Container = styled.div`
   box-sizing: border-box !important;
-  /* background-color: ${({ theme }) => theme.colors.background.background}; */
-  background-color: #000;
 `
 
 export const Contain = styled.div`

@@ -32,7 +32,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  background-color: ${({ theme }) => theme.colors.default.white};
+  background-color: ${({ theme }) => theme.colors.background.foreground};
   border-radius: 6px;
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
     hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
@@ -63,7 +63,7 @@ export const Container = styled.div<{ type: string }>`
 export const HeaderContainer = styled.div`
   display: flex;
   align-items: flex-start;
-  color: ${({ theme }) => theme.colors.default.white};
+  color: ${({ theme }) => theme.colors.typografy.title};
   width: 100%;
   font-weight: 600;
   padding: 1rem;
@@ -73,13 +73,13 @@ export const HeaderContainer = styled.div`
 export const HeaderTitleContainer = styled.div`
   display: flex;
   align-items: center;
-
   gap: 1rem;
   width: 100%;
 `
 
 export const Number = styled.div`
   font-size: 12px;
+  color: ${({ theme }) => theme.colors.typografy.subtitle};
 `
 
 export const DataContainer = styled.div`
@@ -114,7 +114,7 @@ export const TypeContainer = styled.div`
 export const PokemonType = styled.div<{ type: string }>`
   background-color: ${(props) =>
     PokemonTypeColors[props.type as keyof typeof PokemonTypeColors]};
-  color: ${({ theme }) => theme.colors.default.white};
+  color: ${({ theme }) => theme.colors.typografy.text};
   padding: 0.25rem 0.5rem;
   font-size: 10px;
   font-weight: 800;

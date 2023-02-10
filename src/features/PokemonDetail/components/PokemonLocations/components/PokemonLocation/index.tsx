@@ -10,7 +10,7 @@ export default function PokemonLocation({
   location
 }: PokemonLocationTypeProps) {
   return (
-    <>
+    <S.Container>
       <S.EncounterTitle>{`${location.method.name}`}</S.EncounterTitle>
       <S.PercentageContainer>
         <Image
@@ -32,6 +32,6 @@ export default function PokemonLocation({
           ))}
         </S.ConditionalEncounterContainer>
       )}
-    </>
+    </S.Container>
   )
 }

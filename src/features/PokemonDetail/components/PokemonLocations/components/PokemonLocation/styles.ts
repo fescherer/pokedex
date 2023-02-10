@@ -1,5 +1,12 @@
 import styled from 'styled-components'
 
+export const Container = styled.div`
+  color: ${({ theme }) => theme.colors.typografy.subtitle};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 export const EncounterTitle = styled.span`
   font-weight: 600;
   font-size: 14px;
@@ -13,11 +20,9 @@ export const PercentageContainer = styled.div`
   gap: 0.5rem;
   width: 100%;
   font-size: 12px;
-  color: #4e4e4e;
 `
 
 export const EncounterLevel = styled.span`
-  color: #4e4e4e;
   font-weight: 600;
   font-size: 12px;
 `
@@ -28,5 +33,4 @@ export const ConditionalEncounterContainer = styled.div`
   align-items: center;
   gap: 0.25rem;
   font-size: 12px;
-  color: #4e4e4e;
 `

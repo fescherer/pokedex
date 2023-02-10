@@ -32,17 +32,17 @@ export const Input = styled.input`
   }
 
   &::placeholder {
-    color: #000000bf;
+    color: ${({ theme }) => theme.colors.typografy.placeholder};
     opacity: 0.5;
     font-size: 0.75rem;
     font-weight: 400;
   }
 
   &:-ms-input-placeholder {
-    color: #000000bf;
+    color: ${({ theme }) => theme.colors.typografy.placeholder};
   }
   &::-ms-input-placeholder {
-    color: #000000bf;
+    color: ${({ theme }) => theme.colors.typografy.placeholder};
   }
 
   ${media.lessThan('tablet')`

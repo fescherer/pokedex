@@ -12,17 +12,23 @@ export const LightTheme: ThemeConfig = {
       black: palette.black as string
     },
     background: {
-      background: palette.gray[800],
+      background: palette.gray[300],
       foreground: palette.white as string
     },
     typografy: {
       text: palette.dark_gray[400],
       subtitle: palette.dark_gray[50],
+      placeholder: '#000000bf',
       title: palette.black as string
     },
     util: {
       hover: palette.gray[100],
-      divider: '#000'
+      divider: palette.gray[300],
+      overlay: '#00000055',
+      footer: {
+        text: '#00000099',
+        icon: '#00000066'
+      }
     }
   }
 }

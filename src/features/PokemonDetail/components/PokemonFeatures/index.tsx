@@ -3,6 +3,7 @@ import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
 import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
 import PokemonEvolution from './components/PokemonEvolution'
+import * as S from './styles'
 
 export function PokemonFeatures() {
   const { pokemonDetail: pokemon } = usePokemonDetailContext()
@@ -18,7 +19,7 @@ export function PokemonFeatures() {
   // console.log('evolution data: ', pokemon.evolution) //Pegar o evolution- talvez seja melhor criar o próprio componente
 
   return (
-    <div>
+    <S.Wrapper>
       <Title color={pokemonColor}>Evolução</Title>
 
       {/* <S.PokemonFeatureContainer>
@@ -32,6 +33,6 @@ export function PokemonFeatures() {
       </div> */}
 
       <PokemonEvolution pokemon={pokemon.id} />
-    </div>
+    </S.Wrapper>
   )
 }
