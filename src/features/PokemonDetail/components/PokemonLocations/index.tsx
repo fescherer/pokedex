@@ -1,8 +1,10 @@
 import axios from 'axios'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
+import { PokemonGamesColor } from 'types/enum/PokemonGamesColor'
 import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
 import { PokemonEncounterType } from 'types/Pokemon/Location'
+import { getRemovedHyphen, getTranslationName } from 'util/functions'
 import PokemonLocation from './components/PokemonLocation'
 import * as S from './styles'
 
@@ -15,9 +17,23 @@ export default function PokemonLocations() {
   React.useEffect(() => {
     if (!pokemon) return
 
-    axios.get(pokemon.location_area_encounters).then((response) => {
-      setPokeLocation(response.data)
-    })
+    try {
+      axios
+        .get(pokemon.location_area_encounters)
+        .then(async (response) => {
+          const data = response.data.map(
+            async (location: PokemonEncounterType) => {
+              const data = await axios.get(location.location_area.url)
+              const name = getTranslationName(data.data.names, 'en')
+              return { ...location, location_name: name.name }
+            }
+          )
+          return await Promise.all(data)
+        })
+        .then((data) => setPokeLocation(data))
+    } catch (err) {
+      console.log(err)
+    }
   }, [pokemon])
 
   if (!pokeLocation || !pokemon) return <div>Loading...</div>
@@ -27,31 +43,6 @@ export default function PokemonLocations() {
       pokemon.types[0].type.name as keyof typeof PokemonTypeColors
     ]
 
-  // React.useEffect(() => {
-  //   if (!pokemon || pokemon.location) return
-
-  //   const getPokemonLocations = async () => {
-  //     const pokemonEncountersResponse = await axios.get(
-  //       pokemon.location_area_encounters
-  //     )
-  //     const pokemonEncounters = pokemonEncountersResponse.data
-  //     const locationNames = pokemonEncounters.map(
-  //       (encounter: PokemonEncounterType) =>
-  //         encounter.location_area.name.replace(/-/g, ' ')
-  //     )
-
-  //     setPokemonDetail((prev) => {
-  //       if (prev) return { ...prev, location: pokemonEncounters }
-  //       else return null
-  //     })
-  //   }
-
-  //   getPokemonLocations()
-  // }, [pokemon, setPokemonDetail])
-
-  // console.log(pokemon)
-  console.log(pokeLocation)
-
   return (
     <div>
       {pokeLocation.map((location) => (
@@ -59,16 +50,6 @@ export default function PokemonLocations() {
           key={location.location_area.name}
           style={{ marginBottom: '1rem' }}
         >
-          {/* <span>
-            Localização:
-            {
-              getTranslationName(
-                location.location_area?.location_detail.names,
-                'en'
-              ).name
-            }
-          </span> */}
-
           <S.LocationTitle>{location.location_area.name}</S.LocationTitle>
           <S.VersionContainer>
             {location.version_details.map((version, versionIndex) => (
@@ -76,8 +57,14 @@ export default function PokemonLocations() {
                 key={version.version.name}
                 hasDivider={versionIndex < location.version_details.length - 1}
               >
-                <S.TitleGameVersion>
-                  Versão: {version.version.name}
+                <S.TitleGameVersion
+                  color={
+                    PokemonGamesColor[
+                      version.version.name as keyof typeof PokemonGamesColor
+                    ]
+                  }
+                >
+                  Versão: {getRemovedHyphen(version.version.name)}
                 </S.TitleGameVersion>
 
                 <S.EnconterContainer>

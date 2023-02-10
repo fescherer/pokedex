@@ -2,13 +2,15 @@ import Loader from 'compoents/Loader'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import Image from 'next/image'
 import { ArrowLeft } from 'phosphor-react'
+import React from 'react'
+import { getRemovedHyphen, getTranslationName } from 'util/functions'
 import { CardTab } from './components/CardTab'
 import * as S from './styles'
 
 export function PokemonDetail() {
   const { pokemonDetail: pokemon } = usePokemonDetailContext()
 
-  if (!pokemon)
+  if (!pokemon || !pokemon.speciesFullData)
     return (
       <S.LoadingWrapper>
         <Loader />
@@ -21,7 +23,9 @@ export function PokemonDetail() {
         <S.HeaderContainer>
           <S.HeaderTitleContainer>
             <ArrowLeft size={20} />
-            <span>{pokemon.name}</span>
+            <span>
+              {getTranslationName(pokemon.speciesFullData.names, 'en').name}
+            </span>
           </S.HeaderTitleContainer>
           <S.Number>#{String(pokemon.id).padStart(5, '0')}</S.Number>
         </S.HeaderContainer>
@@ -37,7 +41,7 @@ export function PokemonDetail() {
           <S.TypeContainer>
             {pokemon.types.map((type) => (
               <S.PokemonType type={type.type.name} key={type.type.name}>
-                {type.type.name}
+                {getRemovedHyphen(type.type.name)}
               </S.PokemonType>
             ))}
           </S.TypeContainer>

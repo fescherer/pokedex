@@ -61,3 +61,7 @@ function verifyPokemon(pokemon: NamedAPIType, rg: RegExp): boolean {
   if (!pokemon) return false
   return Boolean(pokemon?.name.match(rg) || getIDByURL(pokemon?.url).match(rg))
 }
+
+export function getRemovedHyphen(name: string) {
+  return name.replaceAll('-', ' ')
+}

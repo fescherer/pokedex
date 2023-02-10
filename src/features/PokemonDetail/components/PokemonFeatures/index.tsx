@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { Title } from 'compoents/Title'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
@@ -6,25 +5,9 @@ import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
 import PokemonEvolution from './components/PokemonEvolution'
 
 export function PokemonFeatures() {
-  const { pokemonDetail: pokemon, setPokemonDetail } = usePokemonDetailContext()
-  // const { pokemonEvolution, setPokemonEvolution } = React.useState([])
+  const { pokemonDetail: pokemon } = usePokemonDetailContext()
 
-  React.useEffect(() => {
-    if (!pokemon || pokemon.speciesFullData) return
-
-    axios.get(pokemon.species.url).then((response) => {
-      setPokemonDetail((prev) => {
-        if (prev)
-          return {
-            ...prev,
-            speciesFullData: response.data
-          }
-        else return null
-      })
-    })
-  }, [pokemon, setPokemonDetail])
-
-  if (!pokemon || !pokemon.speciesFullData) return <div>Loading...</div>
+  if (!pokemon) return <div>Loading...</div>
 
   const pokemonColor =
     PokemonTypeColors[

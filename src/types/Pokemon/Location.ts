@@ -36,8 +36,9 @@ export type EncounterVersionDetailsType = {
 
 export type PokemonEncounterType = {
   pokemon?: NamedAPIType
-  location_area: NamedAPIType & { location_detail: LocationAreaType }
+  location_area: NamedAPIType
   version_details: VersionEncounterDetailType[]
+  location_name: string
 }
 
 export type VersionEncounterDetailType = {

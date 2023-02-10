@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { getBestContrastColor } from 'util/functions'
 
 export const Wrapper = styled.div``
 
@@ -36,8 +37,11 @@ export const EnconterContainer = styled.div`
   gap: 1rem;
 `
 
-export const TitleGameVersion = styled.span`
+export const TitleGameVersion = styled.span<{ color: string }>`
   font-size: 12px;
+  text-transform: capitalize;
+  color: ${(props) => getBestContrastColor(props.color)};
+  background-color: ${(props) => props.color};
 `
 
 export const EnconterCard = styled.div<{ color: string }>`

@@ -26,6 +26,7 @@ export const Header = styled.div`
   align-items: center;
   gap: 0.25rem;
   font-size: 12px;
+  text-transform: capitalize;
 `
 
 export const Number = styled.span`

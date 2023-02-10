@@ -2,7 +2,7 @@ import axios from 'axios'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
 import { NamedAPIType } from 'types/Pokemon/Common'
-import { getIDByURL } from 'util/functions'
+import { getIDByURL, getRemovedHyphen } from 'util/functions'
 import * as S from './styles'
 
 type PokemonCardProps = {
@@ -21,7 +21,12 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
       axios
         .get(`https://pokeapi.co/api/v2/pokemon/${getIDByURL(pokemon.url)}/`)
         .then((response) => {
-          setPokemonDetail(response.data)
+          axios.get(response.data.species.url).then((pokeResponse) =>
+            setPokemonDetail({
+              ...response.data,
+              speciesFullData: pokeResponse.data
+            })
+          )
         })
         .catch(() => console.log('Não possível carregar o pokemonCard'))
     } catch (err) {
@@ -36,7 +41,7 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
       onClick={() => savePokemonDetail(pokemon)}
     >
       <S.Header>
-        <span>{pokemon.name}</span>
+        <span>{getRemovedHyphen(pokemon.name)}</span>
         <S.Number>#{String(getIDByURL(pokemon.url)).padStart(5, '0')}</S.Number>
       </S.Header>
       {isHovering ? (
