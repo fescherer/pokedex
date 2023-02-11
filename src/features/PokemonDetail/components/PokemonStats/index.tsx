@@ -43,6 +43,15 @@ function PokemonStat({ pokemonColor, stat, sum }: PokemonStatType) {
   )
 }
 
+const maxStats = {
+  hp: 255,
+  spd: 200,
+  atk: 181,
+  spAtk: 180,
+  def: 230,
+  spDef: 230
+}
+
 export function PokemonStats() {
   const { pokemonDetail: pokemon } = usePokemonDetailContext()
 
@@ -69,23 +78,39 @@ export function PokemonStats() {
       <Title color={pokemonColor}>Stats</Title>
 
       <S.Wrapper>
-        <PokemonStat pokemonColor={pokemonColor} stat={stats.hp} sum={sum} />
+        <PokemonStat
+          pokemonColor={pokemonColor}
+          stat={stats.hp}
+          sum={maxStats.hp}
+        />
         <PokemonStat
           pokemonColor={pokemonColor}
           stat={stats.attack}
-          sum={sum}
+          sum={maxStats.atk}
         />
         <PokemonStat
           pokemonColor={pokemonColor}
           stat={stats.defense}
-          sum={sum}
+          sum={maxStats.def}
         />
-        <PokemonStat pokemonColor={pokemonColor} stat={stats.spatk} sum={sum} />
-        <PokemonStat pokemonColor={pokemonColor} stat={stats.spdef} sum={sum} />
-        <PokemonStat pokemonColor={pokemonColor} stat={stats.spdef} sum={sum} />
+        <PokemonStat
+          pokemonColor={pokemonColor}
+          stat={stats.spatk}
+          sum={maxStats.spAtk}
+        />
+        <PokemonStat
+          pokemonColor={pokemonColor}
+          stat={stats.spdef}
+          sum={maxStats.spDef}
+        />
+        <PokemonStat
+          pokemonColor={pokemonColor}
+          stat={stats.spdef}
+          sum={maxStats.spd}
+        />
 
         <S.StatContainer>
-          <S.Title color={pokemonColor}>{'Total'}</S.Title>
+          <S.Title color={pokemonColor}>{'TOTAL'}</S.Title>
           <S.Divider decorative orientation="vertical" />
 
           <div style={{ width: '100%' }}></div>

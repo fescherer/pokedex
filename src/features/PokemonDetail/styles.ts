@@ -82,15 +82,6 @@ export const Number = styled.div`
   color: ${({ theme }) => theme.colors.typografy.subtitle};
 `
 
-export const DataContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.default.white};
-
-  margin: 0.2rem;
-  border-radius: 5px;
-
-  position: relative;
-`
-
 export const ImageContainer = styled.div`
   image-rendering: pixelated;
   position: absolute;

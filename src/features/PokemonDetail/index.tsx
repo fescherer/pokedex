@@ -47,9 +47,7 @@ export function PokemonDetail() {
           </S.TypeContainer>
         </S.ImageContainer>
 
-        <S.DataContainer>
-          <CardTab />
-        </S.DataContainer>
+        <CardTab />
       </S.Container>
     </S.Wrapper>
   )

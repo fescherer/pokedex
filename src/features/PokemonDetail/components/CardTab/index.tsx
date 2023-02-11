@@ -18,7 +18,7 @@ export function CardTab() {
     ]
 
   return (
-    <S.TabContainer defaultValue="f">
+    <S.TabContainer defaultValue="stats">
       <S.ItemTab>
         <S.Trigger value="stats" color={pokemonColor}>
           <AlignLeft size={16} weight="fill" />

@@ -2,7 +2,11 @@ import styled from 'styled-components'
 import * as Tabs from '@radix-ui/react-tabs'
 
 export const TabContainer = styled(Tabs.Root)`
-  margin-top: 25%;
+  background-color: white;
+  margin: 0.4rem;
+  padding-top: 20%;
+  border-radius: 10px;
+  flex: 1;
 `
 
 export const ItemTab = styled(Tabs.List)`
@@ -32,5 +36,5 @@ export const Trigger = styled(Tabs.Trigger)<{ color: string }>`
   }
 `
 export const Content = styled(Tabs.Content)`
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 `

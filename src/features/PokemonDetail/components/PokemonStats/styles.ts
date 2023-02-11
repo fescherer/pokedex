@@ -33,6 +33,7 @@ export const Divider = styled(Separator.Root)`
 `
 
 export const Value = styled.span`
-  font-weight: 400;
+  font-weight: 600;
+  font-size: 9px;
   color: ${({ theme }) => theme.colors.typografy.text};
 `
