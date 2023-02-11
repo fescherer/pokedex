@@ -28,6 +28,7 @@ export const VersionContainer = styled.div`
 export const Container = styled.div<{ hasDivider: boolean }>`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   margin-bottom: ${(props) => (props.hasDivider ? '1.5rem' : '1rem')};
 `
@@ -43,6 +44,9 @@ export const TitleGameVersion = styled.span<{ color: string }>`
   text-transform: capitalize;
   color: ${(props) => getBestContrastColor(props.color)};
   background-color: ${(props) => props.color};
+  padding: 0.25rem;
+  border-radius: 5px;
+  align-self: flex-start;
 `
 
 export const EnconterCard = styled.div<{ color: string }>`
@@ -50,7 +54,8 @@ export const EnconterCard = styled.div<{ color: string }>`
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
-  border: ${(props) => `1px solid ${props.color}`};
+  border: ${(props) => `1px solid  ${props.color}`};
+  box-shadow: ${(props) => `3px 3px  ${props.color}`};
   border-radius: 5px;
   padding: 0.25rem;
 `

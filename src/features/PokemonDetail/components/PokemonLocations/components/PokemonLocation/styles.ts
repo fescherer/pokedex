@@ -11,6 +11,7 @@ export const EncounterTitle = styled.span`
   font-weight: 600;
   font-size: 14px;
   color: ${({ theme }) => theme.colors.typografy.title};
+  text-align: center;
 `
 
 export const PercentageContainer = styled.div`

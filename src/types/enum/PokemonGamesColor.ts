@@ -1,60 +1,60 @@
 export enum PokemonGamesColor {
-  red = '#6493EB',
-  blue = '#6493EB',
-  yellow = '#6493EB',
+  red = '#810a0a',
+  blue = '#154e9b',
+  yellow = '#f6bd0e',
 
-  gold = '#6493EB',
-  silver = '#6493EB',
-  crystal = '#6493EB',
+  gold = '#988a5b',
+  silver = '#5e646e',
+  crystal = '#8587bc',
 
-  ruby = '#6493EB',
-  sapphire = '#6493EB',
-  emerald = '#6493EB',
+  ruby = '#c32e2f',
+  sapphire = '#294c68',
+  emerald = '#5e8631',
 
-  firered = '#6493EB',
-  leafgreen = '#6493EB',
+  firered = '#ee4f22',
+  leafgreen = '#a5cb37',
 
-  diamond = '#6493EB',
-  pearl = '#6493EB',
-  platinum = '#6493EB',
+  diamond = '#3a4887',
+  pearl = '#715c79',
+  platinum = '#68647d',
 
-  heartgold = '#6493EB',
-  soulsilver = '#6493EB',
+  heartgold = '#dfb457',
+  soulsilver = '#d5dadd',
 
-  black = '#6493EB',
-  white = '#6493EB',
+  black = '#000000',
+  white = '#ccccdd',
 
-  colosseum = '#6493EB',
-  xd = '#6493EB',
+  colosseum = '#fd0000',
+  xd = '#170408',
 
-  'black-2' = '#6493EB',
-  'white-2' = '#6493EB',
+  'black-2' = '#0a0c14',
+  'white-2' = '#fbc88c',
 
-  y = '#6493EB',
-  x = '#6493EB',
+  y = '#086693',
+  x = '#cd301f',
 
-  'omega-ruby' = '#6493EB',
-  'alpha-sapphire' = '#6493EB',
+  'omega-ruby' = '#74170f',
+  'alpha-sapphire' = '#09153e',
 
-  sun = '#6493EB',
-  moon = '#6493EB',
+  sun = '#d37927',
+  moon = '#342a70',
 
-  'ultra-sun' = '#6493EB',
-  'ultra-moon' = '#6493EB',
+  'ultra-sun' = '#faecd3',
+  'ultra-moon' = '#bcd7e8',
 
-  'lets-go-pikachu' = '#6493EB',
-  'lets-go-eevee' = '#6493EB',
+  'lets-go-pikachu' = '#edb918',
+  'lets-go-eevee' = '#c27d3f',
 
-  sword = '#6493EB',
-  shield = '#6493EB',
+  sword = '#01aeef',
+  shield = '#ed0f64',
 
-  'the-isle-of-armor' = '#6493EB',
-  'the-crown-tundra' = '#6493EB',
+  'the-isle-of-armor' = '#f4dd32',
+  'the-crown-tundra' = '#00978f',
 
-  'brilliant-diamond' = '#6493EB',
-  'shining-pearl' = '#6493EB',
-  'legends-arceus' = '#6493EB',
+  'brilliant-diamond' = '#6fc1e3',
+  'shining-pearl' = '#ef92aa',
+  'legends-arceus' = '#0194d1',
 
-  scarlet = '#6493EB',
-  violet = '#6493EB'
+  scarlet = '#d4191f',
+  violet = '#8e1ab3'
 }

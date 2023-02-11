@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
+import { getBestContrastColor } from 'util/functions'
 
 export const LoadingWrapper = styled.div`
   @keyframes contentShow {
@@ -88,7 +89,7 @@ export const ImageContainer = styled.div`
   top: 10%;
   left: 50%;
   translate: -50%;
-  border: 1px solid black;
+
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -105,9 +106,10 @@ export const TypeContainer = styled.div`
 export const PokemonType = styled.div<{ type: string }>`
   background-color: ${(props) =>
     PokemonTypeColors[props.type as keyof typeof PokemonTypeColors]};
-  color: ${({ theme }) => theme.colors.typografy.text};
+  color: ${(props) => getBestContrastColor(props.type)};
   padding: 0.25rem 0.5rem;
   font-size: 10px;
   font-weight: 800;
   border-radius: 10px;
+  text-transform: capitalize;
 `

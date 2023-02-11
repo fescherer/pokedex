@@ -2,7 +2,6 @@ import axios from 'axios'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import React from 'react'
 import { PokemonGamesColor } from 'types/enum/PokemonGamesColor'
-import { PokemonTypeColors } from 'types/enum/PokemonTypeColors'
 import { PokemonEncounterType } from 'types/Pokemon/Location'
 import { getRemovedHyphen, getTranslationName } from 'util/functions'
 import PokemonLocation from './components/PokemonLocation'
@@ -30,18 +29,16 @@ export default function PokemonLocations() {
           )
           return await Promise.all(data)
         })
-        .then((data) => setPokeLocation(data))
+        .then((data) => {
+          console.log(data)
+          setPokeLocation(data)
+        })
     } catch (err) {
       console.log(err)
     }
   }, [pokemon])
 
   if (!pokeLocation || !pokemon) return <div>Loading...</div>
-
-  const pokemonColor =
-    PokemonTypeColors[
-      pokemon.types[0].type.name as keyof typeof PokemonTypeColors
-    ]
 
   return (
     <div>
@@ -50,7 +47,7 @@ export default function PokemonLocations() {
           key={location.location_area.name}
           style={{ marginBottom: '1rem' }}
         >
-          <S.LocationTitle>{location.location_area.name}</S.LocationTitle>
+          <S.LocationTitle>{location.location_name}</S.LocationTitle>
           <S.VersionContainer>
             {location.version_details.map((version, versionIndex) => (
               <S.Container
@@ -69,7 +66,14 @@ export default function PokemonLocations() {
 
                 <S.EnconterContainer>
                   {version.encounter_details.map((encounter, index) => (
-                    <S.EnconterCard color={pokemonColor} key={index}>
+                    <S.EnconterCard
+                      color={
+                        PokemonGamesColor[
+                          version.version.name as keyof typeof PokemonGamesColor
+                        ]
+                      }
+                      key={index}
+                    >
                       <PokemonLocation location={encounter}></PokemonLocation>
                     </S.EnconterCard>
                   ))}
