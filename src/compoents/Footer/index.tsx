@@ -1,11 +1,5 @@
 import GithubIcon from 'icons/github'
-import {
-  DiscordLogo,
-  InstagramLogo,
-  LinkedinLogo,
-  TwitterLogo,
-  YoutubeLogo
-} from 'phosphor-react'
+import { LinkedinLogo, YoutubeLogo } from 'phosphor-react'
 import { appConfig, author } from 'util/config'
 import * as S from './styles'
 
@@ -15,22 +9,10 @@ const year = date.getFullYear()
 export function Footer() {
   const footerIcons = [
     {
-      title: 'Discord',
-      icon: <DiscordLogo size={32} weight="fill" />,
-      color: '#7289DA',
-      link: ''
-    },
-    {
       title: 'Github',
       icon: <GithubIcon />,
       color: '#000000',
-      link: 'https://github.com/ofelipescherer/boilerplate'
-    },
-    {
-      title: 'Twitter',
-      icon: <TwitterLogo size={32} weight="fill" />,
-      color: '#1DA1F2',
-      link: ''
+      link: 'https://github.com/ofelipescherer'
     },
     {
       title: 'Linkedin',
@@ -42,13 +24,7 @@ export function Footer() {
       title: 'Youtube',
       icon: <YoutubeLogo size={32} weight="fill" />,
       color: '#FF0000',
-      link: ''
-    },
-    {
-      title: 'Instagram',
-      icon: <InstagramLogo size={32} weight="fill" />,
-      color: '#000',
-      link: ''
+      link: 'https://www.youtube.com/channel/UCySqmz_Rohnl53VLoNQsnKg'
     }
   ]
 

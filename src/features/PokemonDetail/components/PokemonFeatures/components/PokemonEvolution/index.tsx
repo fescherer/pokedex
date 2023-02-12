@@ -11,9 +11,7 @@ import * as S from './styles'
 function PokemonEvolution() {
   const [pokeEvo, setPokeEvo] = React.useState<ChainLinkType | null>(null)
   const { pokemonDetail: pokemon } = usePokemonDetailContext()
-  console.log('render')
   React.useEffect(() => {
-    console.log(pokemon)
     if (!pokemon || !pokemon.speciesFullData) return
     else
       axios

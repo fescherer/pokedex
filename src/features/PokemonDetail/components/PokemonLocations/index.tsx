@@ -28,10 +28,7 @@ export default function PokemonLocations() {
           )
           return await Promise.all(data)
         })
-        .then((data) => {
-          console.log(data)
-          setPokeLocation(data)
-        })
+        .then((data) => setPokeLocation(data))
     } catch (err) {
       console.log(err)
     }
