@@ -60,5 +60,7 @@ export const TriggerCard = styled(HoverCard.Trigger)`
 
 export const WrapperHoverCard = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: ${({ theme }) => theme.colors.default.white};
 `

@@ -20,6 +20,7 @@ export default function PokemonDetailEvolution({
   const [itemSprite, setItemSprite] = React.useState<ItemType | null>(null)
 
   React.useEffect(() => {
+    if (!data) return
     if (data?.item)
       axios
         .get(data?.item?.url)
@@ -29,11 +30,11 @@ export default function PokemonDetailEvolution({
       axios
         .get(data?.held_item?.url)
         .then((response) => setItemSpriteHeld(response.data))
-  }, [data])
+  }, [data?.item, data?.held_item, data])
 
   return (
     <S.EvolutionIndicator>
-      {data.gender && <span>{data.gender}</span>}
+      {data.gender && <span>Gender: {data.gender}</span>}
       {data.held_item && itemSpriteHeld && (
         <Image
           src={itemSpriteHeld.sprites.default}
@@ -52,23 +53,27 @@ export default function PokemonDetailEvolution({
           title={data.item.name}
         />
       )}
-      {data.known_move && <span> {data.known_move.name}</span>}
-      {data.known_move_type && <span>{data.known_move_type.name}</span>}
-      {data.location && <span> {data.location.name}</span>}
+      {data.known_move && <span>Known Move: {data.known_move.name}</span>}
+      {data.known_move_type && (
+        <span>Known Move Type: {data.known_move_type.name}</span>
+      )}
+      {data.location && <span>Location: {data.location.name}</span>}
 
-      {data.min_affection && <span>{data.min_affection}</span>}
+      {data.min_affection && <span>Min. Affection: {data.min_affection}</span>}
 
-      {data.min_beauty && <span>{data.min_beauty}</span>}
+      {data.min_beauty && <span>Min. Beauty: {data.min_beauty}</span>}
 
-      {data.min_happiness && <span>{data.min_happiness}</span>}
+      {data.min_happiness && <span>Min. Happiness: {data.min_happiness}</span>}
 
-      {data.min_level && <span>{data.min_level}</span>}
+      {data.min_level && <span>Min. Level: {data.min_level}</span>}
 
-      {data.needs_overworld_rain && <span>{data.needs_overworld_rain}</span>}
+      {data.needs_overworld_rain && (
+        <span>Rain: {data.needs_overworld_rain}</span>
+      )}
 
       {data.party_species && (
         <div>
-          <span>Pokémon na party</span>
+          <span>Pokémon in party</span>
           <span>{data.party_species.name}</span>
           <Image
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
@@ -83,20 +88,20 @@ export default function PokemonDetailEvolution({
 
       {data.party_type && (
         <div>
-          <span>Algum pokémon do tipo na party</span>
+          <span>Some pokémon with type: </span>
           <span>{data.party_type.name}</span>
         </div>
       )}
 
       {data.relative_physical_stats && (
-        <span> {data.relative_physical_stats} </span>
+        <span>Physical Stats: {data.relative_physical_stats} </span>
       )}
 
-      {data.time_of_day && <span>{data.time_of_day}</span>}
+      {data.time_of_day && <span>Time of day: {data.time_of_day}</span>}
 
       {data.trade_species && (
         <div>
-          <span>{data.trade_species.name}</span>
+          <span>Trade for: {data.trade_species.name}</span>
           <Image
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
               data.trade_species?.url

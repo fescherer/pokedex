@@ -1,15 +1,15 @@
 export enum PokemonEvolutionMethods {
-  'level-up' = 'Level UPa',
-  'trade' = 'AAAAAAAAAAAAA',
-  'use-item' = 'AAAAAAAAAAAAA',
-  'shed' = 'AAAAAAAAAAAAA',
-  'spin' = 'AAAAAAAAAAAAA',
-  'tower-of-darkness' = 'AAAAAAAAAAAAA',
-  'tower-of-waters' = 'AAAAAAAAAAAAA',
-  'three-critical-hits' = 'AAAAAAAAAAAAA',
-  'take-damage' = 'AAAAAAAAAAAAA',
-  'other' = 'AAAAAAAAAAAAA',
-  'agile-style-move' = 'AAAAAAAAAAAAA',
-  'strong-style-move' = 'AAAAAAAAAAAAA',
-  'recoil-damage' = 'AAAAAAAAAAAAA'
+  'level-up' = 'Level Up',
+  'trade' = 'Trade',
+  'use-item' = 'Using Item',
+  'shed' = 'Shedinja special',
+  'spin' = 'Spin',
+  'tower-of-darkness' = 'Tower of Darkness',
+  'tower-of-waters' = 'Tower of Waters',
+  'three-critical-hits' = 'Three Critical Hits',
+  'take-damage' = 'Take Damage',
+  'other' = 'Other',
+  'agile-style-move' = 'Agile Style Move',
+  'strong-style-move' = 'Strong Sstyle Move',
+  'recoil-damage' = 'Recoil Damage'
 }

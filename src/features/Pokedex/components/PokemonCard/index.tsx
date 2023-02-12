@@ -11,26 +11,23 @@ type PokemonCardProps = {
 
 export function PokemonCard({ pokemon }: PokemonCardProps) {
   const [isHovering, setIsHovered] = React.useState(false)
+  const id = getIDByURL(pokemon.url)
   const onMouseEnter = () => setIsHovered(true)
   const onMouseLeave = () => setIsHovered(false)
+  const [hasError, setHasError] = React.useState<boolean>(false)
 
-  const [SpriteSrc, setSpriteSrc] = React.useState(
-    `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
-      pokemon?.url
-    )}.png`
-  )
+  const SpriteSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+
   const [animationSpriteSrc, setAnimationSpriteSrc] = React.useState(
-    `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${getIDByURL(
-      pokemon?.url
-    )}.gif`
+    `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`
   )
 
   const { setPokemonDetail } = usePokemonDetailContext()
 
-  const savePokemonDetail = (pokemon: NamedAPIType) => {
+  const savePokemonDetail = () => {
     try {
       axios
-        .get(`https://pokeapi.co/api/v2/pokemon/${getIDByURL(pokemon.url)}/`)
+        .get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
         .then((response) => {
           axios.get(response.data.species.url).then((pokeResponse) =>
             setPokemonDetail({
@@ -39,51 +36,43 @@ export function PokemonCard({ pokemon }: PokemonCardProps) {
             })
           )
         })
-        .catch(() => console.log('Não possível carregar o pokemonCard'))
+        .catch(() => console.log('Error loading cards'))
     } catch (err) {
       console.log('error')
     }
   }
 
-  return (
-    <S.Wrapper
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onClick={() => savePokemonDetail(pokemon)}
-    >
-      <S.Header>
-        <span>{getRemovedHyphen(pokemon.name)}</span>
-        <S.Number>#{String(getIDByURL(pokemon.url)).padStart(5, '0')}</S.Number>
-      </S.Header>
-      {isHovering ? (
-        <S.PokeImage
-          src={animationSpriteSrc}
-          width={96}
-          height={96}
-          alt={pokemon.name}
-          onError={() =>
-            setSpriteSrc(
-              `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
-                pokemon?.url
-              )}.png`
-            )
-          }
-        />
-      ) : (
-        <S.PokeImage
-          src={SpriteSrc}
-          width={96}
-          height={96}
-          alt={pokemon.name}
-          onError={() =>
-            setAnimationSpriteSrc(
-              `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getIDByURL(
-                pokemon?.url
-              )}.png`
-            )
-          }
-        />
-      )}
-    </S.Wrapper>
-  )
+  if (hasError) return <></>
+  else
+    return (
+      <S.Wrapper
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onClick={() => savePokemonDetail()}
+      >
+        <S.Header>
+          <span>{getRemovedHyphen(pokemon.name)}</span>
+          <S.Number>
+            #{String(getIDByURL(pokemon.url)).padStart(5, '0')}
+          </S.Number>
+        </S.Header>
+        {isHovering && Number(id) < 650 ? (
+          <S.PokeImage
+            src={animationSpriteSrc}
+            width={96}
+            height={96}
+            alt={pokemon.name}
+            onError={() => setAnimationSpriteSrc(SpriteSrc)}
+          />
+        ) : (
+          <S.PokeImage
+            src={SpriteSrc}
+            width={96}
+            height={96}
+            alt={pokemon.name}
+            onError={() => setHasError(true)}
+          />
+        )}
+      </S.Wrapper>
+    )
 }

@@ -9,15 +9,15 @@ import * as Dialog from '@radix-ui/react-dialog'
 import * as S from './styles'
 import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 
-export function Pokedex() {
+function Pokedex() {
   const { search } = useSearchContext()
   const [pokeData, setPokeData] = React.useState<NamedAPIType[]>([])
   const [pokeDataFiltered, setPokeDataFiltered] = React.useState<
     NamedAPIType[]
   >([])
   const { setPokemonDetail } = usePokemonDetailContext()
-
   React.useEffect(() => {
+    console.log('render tw')
     axios.get('https://pokeapi.co/api/v2/pokemon?limit=-1').then((response) => {
       setPokeData(response.data.results)
     })
@@ -51,3 +51,5 @@ export function Pokedex() {
     </S.Wrapper>
   )
 }
+
+export default React.memo(Pokedex)

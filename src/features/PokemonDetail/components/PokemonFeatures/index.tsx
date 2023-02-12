@@ -15,24 +15,11 @@ export function PokemonFeatures() {
       pokemon.types[0].type.name as keyof typeof PokemonTypeColors
     ]
 
-  // console.log('specie data: ', pokemon.speciesFullData) //Pegar o varieties, genera, habitat, names
-  // console.log('evolution data: ', pokemon.evolution) //Pegar o evolution- talvez seja melhor criar o próprio componente
-
   return (
     <S.Wrapper>
-      <Title color={pokemonColor}>Evolução</Title>
+      <Title color={pokemonColor}>Evolution</Title>
 
-      {/* <S.PokemonFeatureContainer>
-        <span>{pokemon?.height}</span>
-        <S.Divider decorative orientation="vertical" />
-        <span>{pokemon?.weight}</span>
-      </S.PokemonFeatureContainer>
-
-      <div>
-        <span>{`Generation: ${pokemon.speciesFullData.generation.name}`}</span>
-      </div> */}
-
-      <PokemonEvolution pokemon={pokemon.id} />
+      <PokemonEvolution />
     </S.Wrapper>
   )
 }

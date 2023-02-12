@@ -1,32 +1,26 @@
 import axios from 'axios'
 import Loader from 'compoents/Loader'
+import { usePokemonDetailContext } from 'context/pokemonDetail.context'
 import Image from 'next/image'
 import React from 'react'
 import { ChainLinkType, EvolutionChainType } from 'types/Pokemon/Evolution'
-import { PokemonSpeciesFullDataType } from 'types/Pokemon/Species'
 import { getIDByURL } from 'util/functions'
 import StageEvolution from '../StageEvolution'
 import * as S from './styles'
 
-type PokemonEvolutionProps = {
-  pokemon: string | number
-}
-
-export default function PokemonEvolution({ pokemon }: PokemonEvolutionProps) {
+function PokemonEvolution() {
   const [pokeEvo, setPokeEvo] = React.useState<ChainLinkType | null>(null)
-
+  const { pokemonDetail: pokemon } = usePokemonDetailContext()
+  console.log('render')
   React.useEffect(() => {
-    axios
-      .get<PokemonSpeciesFullDataType>(
-        `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`
-      )
-      .then((response) => {
-        axios
-          .get<EvolutionChainType>(response.data.evolution_chain.url)
-          .then((chain) => {
-            setPokeEvo(chain.data.chain)
-          })
-      })
+    console.log(pokemon)
+    if (!pokemon || !pokemon.speciesFullData) return
+    else
+      axios
+        .get<EvolutionChainType>(pokemon.speciesFullData.evolution_chain.url)
+        .then((chain) => {
+          setPokeEvo(chain.data.chain)
+        })
   }, [pokemon])
 
   if (!pokeEvo)
@@ -64,3 +58,5 @@ export default function PokemonEvolution({ pokemon }: PokemonEvolutionProps) {
     </S.Wrapper>
   )
 }
+
+export default React.memo(PokemonEvolution)

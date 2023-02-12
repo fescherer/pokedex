@@ -9,9 +9,8 @@ import * as S from './styles'
 
 export default function PokemonLocations() {
   const { pokemonDetail: pokemon } = usePokemonDetailContext()
-  const [pokeLocation, setPokeLocation] = React.useState<
-    PokemonEncounterType[]
-  >([])
+  const [pokeLocation, setPokeLocation] =
+    React.useState<PokemonEncounterType[]>()
 
   React.useEffect(() => {
     if (!pokemon) return
@@ -40,8 +39,10 @@ export default function PokemonLocations() {
 
   if (!pokeLocation || !pokemon) return <div>Loading...</div>
 
+  if (pokeLocation.length === 0) return <span>No location found</span>
+
   return (
-    <div>
+    <>
       {pokeLocation.map((location) => (
         <S.LocationCard
           key={location.location_area.name}
@@ -61,7 +62,7 @@ export default function PokemonLocations() {
                     ]
                   }
                 >
-                  Versão: {getRemovedHyphen(version.version.name)}
+                  Version: {getRemovedHyphen(version.version.name)}
                 </S.TitleGameVersion>
 
                 <S.EnconterContainer>
@@ -83,6 +84,6 @@ export default function PokemonLocations() {
           </S.VersionContainer>
         </S.LocationCard>
       ))}
-    </div>
+    </>
   )
 }

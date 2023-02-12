@@ -19,10 +19,12 @@ export default function PokemonLocation({
   }>()
 
   React.useEffect(() => {
-    axios.get(location.method.url).then((response) => {
-      const name = getTranslationName(response.data.names, 'en')
-      setLocationName({ name: name.name, type: response.data.name })
-    })
+    if (!location.method.url) return
+    else
+      axios.get(location.method.url).then((response) => {
+        const name = getTranslationName(response.data.names, 'en')
+        setLocationName({ name: name.name, type: response.data.name })
+      })
   }, [location.method.url])
 
   if (!locationName) return <div>Loading...</div>
