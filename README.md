@@ -217,7 +217,7 @@ My name is Felipe Scherer and you can find me at:
 [license-shield]: https://img.shields.io/github/license/ofelipescherer/pokedex.svg?style=for-the-badge
 [license-url]: https://github.com/ofelipescherer/pokedex/blob/master/LICENSE.md
 
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=0E76A8
 [linkedin-url]: https://www.linkedin.com/in/ofelipescherer
 [youtube-shield]: https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white
 [youtube-url]: https://www.youtube.com/channel/UCySqmz_Rohnl53VLoNQsnKg
