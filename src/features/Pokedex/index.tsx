@@ -16,6 +16,8 @@ function Pokedex() {
     NamedAPIType[]
   >([])
   const { setPokemonDetail } = usePokemonDetailContext()
+  const [take, setTake] = React.useState(30)
+
   React.useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokemon?limit=-1').then((response) => {
       setPokeData(response.data.results)
@@ -23,12 +25,16 @@ function Pokedex() {
   }, [])
 
   React.useEffect(() => {
-    const filteredData = filterData(pokeData, search)
+    const filteredData = filterData(pokeData, search, take)
     setPokeDataFiltered(filteredData)
-  }, [pokeData, search])
+  }, [pokeData, search, take])
 
   function closeDialog() {
     setPokemonDetail(null)
+  }
+
+  function handleTake() {
+    setTake((prev) => prev + 30)
   }
 
   return (
@@ -46,6 +52,10 @@ function Pokedex() {
           </S.PokeDialog>
         </Dialog.Portal>
       </Dialog.Root>
+
+      {take < 1277 && !search && (
+        <S.Button onClick={handleTake}>Ver mais</S.Button>
+      )}
     </S.Wrapper>
   )
 }

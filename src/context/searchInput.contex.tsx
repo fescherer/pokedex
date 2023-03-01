@@ -2,7 +2,7 @@ import React from 'react'
 import { Children } from 'types/Global'
 
 type SearchContextType = {
-  search?: string
+  search: string
   setSearch: React.Dispatch<React.SetStateAction<string>>
 }
 

@@ -75,3 +75,17 @@ export const LoadMoreButton = styled.div`
     filter: brightness(0.8);
   }
 `
+
+export const Button = styled.button`
+  cursor: pointer;
+  background-color: #d31c1c;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  transition: all 0.6s ease;
+  &:hover {
+    filter: brightness(0.9);
+  }
+`

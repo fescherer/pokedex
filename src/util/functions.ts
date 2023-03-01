@@ -49,8 +49,8 @@ export function getIDByURL(url: string) {
   return urlSplitted[urlSplitted.length - 2]
 }
 
-export function filterData(data: NamedAPIType[], filter?: string) {
-  if (!filter) return data
+export function filterData(data: NamedAPIType[], filter: string, take: number) {
+  if (!filter) return data.slice(0, take)
   else {
     const rg = new RegExp(`^(?=.*\\b${filter}).*$`, 'gmi')
     return data.filter((pokemon: NamedAPIType) => verifyPokemon(pokemon, rg))
