@@ -39,6 +39,7 @@ export default function StageEvolution({ data }: StageEvolutionProps) {
           width={75}
           height={75}
           alt={data.species.name}
+          unoptimized
         />
       </S.PokemonCard>
     </S.Wrapper>

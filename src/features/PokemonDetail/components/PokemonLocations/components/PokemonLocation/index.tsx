@@ -43,6 +43,7 @@ export default function PokemonLocation({
           height={16}
           alt={locationName.name}
           title={locationName.name}
+          unoptimized
         />
 
         <span>{`(${location.chance}%)`}</span>

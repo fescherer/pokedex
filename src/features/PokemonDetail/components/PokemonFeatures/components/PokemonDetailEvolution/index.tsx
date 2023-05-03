@@ -42,6 +42,7 @@ export default function PokemonDetailEvolution({
           height={30}
           alt={itemSpriteHeld.name}
           title={data.held_item.name}
+          unoptimized
         />
       )}
       {data.item && itemSprite && (
@@ -51,6 +52,7 @@ export default function PokemonDetailEvolution({
           height={30}
           alt={itemSprite.name}
           title={data.item.name}
+          unoptimized
         />
       )}
       {data.known_move && <span>Known Move: {data.known_move.name}</span>}

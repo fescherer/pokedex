@@ -39,6 +39,7 @@ function PokemonEvolution() {
           width={75}
           height={75}
           alt=""
+          unoptimized
         />
       </S.PokemonCard>
       <S.Container>

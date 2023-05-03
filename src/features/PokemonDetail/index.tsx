@@ -36,6 +36,7 @@ export function PokemonDetail() {
             width={150}
             height={150}
             alt=""
+            unoptimized
           />
 
           <S.TypeContainer>
