@@ -1,14 +1,12 @@
-
-
 <a name="readme-top"></a>
 
 <div align="center">
 
-  [![Contributors][contributors-shield]][contributors-url]
-  [![Forks][forks-shield]][forks-url]
-  [![Stargazers][stars-shield]][stars-url]
-  [![Issues][issues-shield]][issues-url]
-  [![MIT License][license-shield]][license-url]
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
   <br />
   <a href="https://github.com/fescherer/pokedex">
@@ -33,25 +31,20 @@ A complete Pokédex using [PokeAPI](https://pokeapi.co) to illustrate more than 
 •
 <a href="#usage">How to use</a>
 •
-<a href="#issue">Report Bug / Request Feature</a>
-•
-<a href="#contributing">Contributing</a>
-•
-<a href="#contributors">Contributors</a>
-•
-<a href="#license">License</a>
+<a href="#info">Info</a>
 •
 <a href="#contact">Contact me</a>
+•
+<a href="#contributors">Contributors</a>
+
 </p>
 </div>
 
-
-
-
 <!-- **********************🐲About🐲********************** -->
+
 <a name="about"></a>
 
-## <Emoji project> About <Emoji project>
+## 📕 About 📕
 
 The pokédex is a project made with Next JS and PokéAPI. It's a complete pokédex showing stats, evolutions and locations of more than 1000 pokémon species. This project is really great to demonstrate the basic and intermediate features of NextJS and ReactJS. Feel free to explore the code 😄🚀💻📃
 
@@ -59,18 +52,18 @@ This project has full accessibility and mobile support.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- **********************🐲Built With🐲********************** -->
+
 <a name="stack"></a>
 
 ## 💻 Built With 💻
 
 <div align="center">
 
-[![Next][Next.js]][Next-url]
-[![React][React.js]][React-url]
-[![HTML 5][HTML 5]][html-url]
-[![CSS 3][CSS 3]][css-url]
+[![Next][next]][Next-url]
+[![React][reactjs]][React-url]
+[![HTML 5][html-5]][html-url]
+[![CSS 3][css-3]][css-url]
 [![Typescript][Typescript]][typescript-url]
 [![Styled Components][Styled Components]][styled-components-url]
 
@@ -78,8 +71,8 @@ This project has full accessibility and mobile support.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- **********************🐲Getting Started🐲********************** -->
+
 <a name="install"></a>
 
 ## 🚂 Getting Started 🚂
@@ -88,26 +81,33 @@ To get this project up and running locally on your pc, follow the steps:
 
 ### Pre requisites
 
-* npm
+- npm
   ```sh
-  npm install npm@latest -g
+   npm install npm@latest -g
   ```
 
 ### Installation
 
 1. Clone the repo
-   ```sh
+  ```sh
    git clone https://github.com/fescherer/pokedex.git
-   ```
-2. Install NPM packages
-   ```sh
+  ```
+2. Go to project's folder
+
+  ```sh
+   cd rocketseat/03-github-blog
+  ```
+
+3. Install NPM packages
+  ```sh
    npm install
-   ```
+  ```
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- **********************🐲How to use🐲********************** -->
+
 <a name="usage"></a>
 
 ## 🙋 How to use 🙋
@@ -124,41 +124,25 @@ In the pokémon detail, we have it's type, color type as card border and a tab m
 ![Pokémon Detail Evolution](https://user-images.githubusercontent.com/62115215/218336447-637a2938-99bb-4857-a016-e3175751af18.png)
 ![Pokémon Detail Locations](https://user-images.githubusercontent.com/62115215/218336452-545db709-1cfa-45be-8c9f-24b2fe19ca14.png)
 
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- **********************🐲Info🐲********************** -->
 
-<!-- **********************🐲Report Bug / Request Feature🐲********************** -->
-<a name="issue"></a>
+<a name="info"></a>
 
-## 🐞 Report Bug / Request Feature 🐞
+## 🌎 Info 🌎
 
-If you found a bug or want to request a feature, you can open an [issue](https://github.com/fescherer/utils/blob/main/ISSUE.md)
+Don't forget to leave a star if you like the project ✨
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<div align="center">
 
-<!-- **********************🐲Be part of this project🐲********************** -->
-<a name="contributing"></a>
+[![MIT License][license-shield]][license-url]
+[![How to contribute][info-contribute-shield]][info-contribute-url]
+[![Create an issue][info-issues-shield]][info-issues-url]
 
-## 👋 Be part of this project 👋
-
-Contributions are extremely welcome. You can see how to make one by following the file [Contributing](https://github.com/fescherer/utils/blob/main/CONTRIBUTING.md)
-
-And don't forget to leave a star on the project if you liked it 🤩
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- **********************🐲License🐲********************** -->
-<a name="license"></a>
-
-## ⚖️ License ⚖️
-
-Distributed under the MIT License. See [License](LICENSE.md) for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- **********************🐲Contact Me🐲********************** -->
 <a name="contact"></a>
@@ -169,8 +153,8 @@ My name is Felipe Scherer. You can find my socials at [my Github profile](https:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- **********************🐲Contributors🐲********************** -->
+
 <a name="contributors"></a>
 
 ## 🤗 Contributors 🤗
@@ -179,7 +163,7 @@ My name is Felipe Scherer. You can find my socials at [my Github profile](https:
   <tr>
     <td align="center">
       <a href="https://github.com/fescherer">
-        <img src="https://avatars.githubusercontent.com/u/62115215" width="100px;" alt="Felipe Scherer Picture"/><br>
+        <img src="https://github.com/fescherer.png" width="100px;" alt="Felipe Scherer Picture"/><br>
         <sub>
           <b>Felipe Scherer</b>
         </sub>
@@ -190,10 +174,7 @@ My name is Felipe Scherer. You can find my socials at [my Github profile](https:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+<!-- Badges and Badges Link -->
 [contributors-shield]: https://img.shields.io/github/contributors/fescherer/pokedex.svg?style=for-the-badge
 [contributors-url]: https://github.com/fescherer/pokedex/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/fescherer/pokedex.svg?style=for-the-badge
@@ -202,18 +183,26 @@ My name is Felipe Scherer. You can find my socials at [my Github profile](https:
 [stars-url]: https://github.com/fescherer/pokedex/stargazers
 [issues-shield]: https://img.shields.io/github/issues/fescherer/pokedex.svg?style=for-the-badge
 [issues-url]: https://github.com/fescherer/pokedex/issues
-[license-shield]: https://img.shields.io/github/license/fescherer/pokedex.svg?style=for-the-badge
-[license-url]: https://github.com/fescherer/pokedex/blob/master/LICENSE.md
 
-[HTML 5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[license-shield]: https://img.shields.io/github/license/fescherer/pokedex.svg?style=for-the-badge
+[license-url]: https://github.com/fescherer/pokedex/blob/master/LICENSE
+[info-contribute-shield]: https://img.shields.io/badge/👋-How%20to%20contribute-blue.svg?style=for-the-badge
+[info-contribute-url]: https://github.com/fescherer/utils/blob/main/CONTRIBUTING.md
+[info-issues-shield]: https://img.shields.io/badge/🐞-How%20to%20create%20an%20issue-blue.svg?style=for-the-badge
+[info-issues-url]: https://github.com/fescherer/utils/blob/main/ISSUE.md
+
+<!-- https://github.com/Ileriayo/markdown-badges -->
+[vite]: https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white
+[vite-url]: https://vitejs.dev
+[reactjs]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[react-url]: https://reactjs.org/
+[html-5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
 [html-url]: https://developer.mozilla.org/en-US/docs/Web/HTML
-[CSS 3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[css-3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
 [css-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
-[Typescript]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[typescript]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
 [typescript-url]: https://www.typescriptlang.org
-[Styled Components]: https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white
+[styled components]: https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white
 [styled-components-url]: https://styled-components.com
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[next]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
