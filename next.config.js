@@ -11,7 +11,8 @@ const nextConfig = {
       'raw.githubusercontent.com',
       'cdn.playscores.com',
       'www.shutterstock.com'
-    ]
+    ],
+    unoptimized: true,
   }
 }
 
